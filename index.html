@@ -328,18 +328,18 @@
 
                     <div class="contact-form-card glass-card">
                         <h3>留言咨询</h3>
-                        <form id="contact-form" class="contact-form">
+                        <form id="contact-form" class="contact-form" action="https://formspree.io/f/xnjyjpgb" method="POST">
                             <div class="form-group">
                                 <label for="form-name">您的姓名</label>
-                                <input type="text" id="form-name" required placeholder="例如：张先生">
+                                <input type="text" id="form-name" name="name" required placeholder="例如：张先生">
                             </div>
                             <div class="form-group">
                                 <label for="form-email">您的邮箱</label>
-                                <input type="email" id="form-email" required placeholder="例如：client@example.com">
+                                <input type="email" id="form-email" name="email" required placeholder="例如：client@example.com">
                             </div>
                             <div class="form-group">
                                 <label for="form-message">您的需求简述</label>
-                                <textarea id="form-message" rows="5" required placeholder="请简要描述您的项目需求或咨询问题..."></textarea>
+                                <textarea id="form-message" name="message" rows="5" required placeholder="请简要描述您的项目需求或咨询问题..."></textarea>
                             </div>
                             <button type="submit" id="btn-submit-form" class="btn btn-primary btn-block">发送留言</button>
                         </form>

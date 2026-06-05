@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ==========================================
-    // 5. 留言表单模拟提交与交互验证
+    // 5. 留言表单 Formspree 提交与交互验证
     // ==========================================
     const contactForm = document.getElementById('contact-form');
     const formSubmitBtn = document.getElementById('btn-submit-form');
@@ -131,25 +131,49 @@ document.addEventListener('DOMContentLoaded', () => {
             formSubmitBtn.textContent = '发送中...';
             formSubmitBtn.disabled = true;
             
-            // 模拟 API 延迟请求过程
-            setTimeout(() => {
-                // 模拟提交成功
-                statusMsg.textContent = '您的留言已成功送达！我们会尽快与您联系。';
-                statusMsg.className = 'status-msg success';
-                
-                // 重置表单
-                contactForm.reset();
-                
-                // 恢复提交按钮
+            // 获取表单数据并使用 Fetch 发送到 Formspree
+            const formData = new FormData(contactForm);
+            
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // 提交成功
+                    statusMsg.textContent = '您的留言已成功送达！我们会尽快与您联系。';
+                    statusMsg.className = 'status-msg success';
+                    contactForm.reset();
+                } else {
+                    // 接口返回错误
+                    response.json().then(data => {
+                        if (data && data.errors) {
+                            statusMsg.textContent = data.errors.map(error => error.message).join(', ');
+                        } else {
+                            statusMsg.textContent = '非常抱歉，发送留言时遇到问题，请稍后再试。';
+                        }
+                    });
+                    statusMsg.className = 'status-msg error';
+                }
+            })
+            .catch(error => {
+                // 网络错误
+                statusMsg.textContent = '网络连接发生错误，请检查您的网络后重试。';
+                statusMsg.className = 'status-msg error';
+            })
+            .finally(() => {
+                // 恢复提交按钮状态
                 formSubmitBtn.textContent = originalBtnText;
                 formSubmitBtn.disabled = false;
                 
-                // 3秒后自动隐藏成功信息
+                // 4秒后自动隐藏提示信息
                 setTimeout(() => {
                     statusMsg.className = 'status-msg hide';
                 }, 4000);
-                
-            }, 1500);
+            });
         });
     }
 });
