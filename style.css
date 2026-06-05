@@ -830,6 +830,16 @@ button, input, textarea {
     color: var(--text-main);
 }
 
+.info-text p a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.info-text p a:hover {
+    color: var(--color-primary);
+}
+
 .contact-form-card {
     padding: 50px;
 }
