@@ -1017,3 +1017,168 @@ button, input, textarea {
         text-align: center;
     }
 }
+
+/* ==========================================
+   PET GROOMING SECTION (明亮温暖对比风格)
+   ========================================== */
+.pet-grooming-section {
+    background: linear-gradient(135deg, #fffcf9 0%, #f7f1eb 100%);
+    color: #4a3e3d; /* 暖深褐文字 */
+    border-radius: 40px;
+    margin: 40px 20px;
+    padding: 100px 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+.pet-tag {
+    background: rgba(255, 126, 103, 0.1);
+    color: #ff7e67;
+}
+
+.pet-title {
+    color: #382c2b;
+}
+
+.pet-subtitle {
+    color: #726260;
+}
+
+.pet-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+.pet-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 30px rgba(74, 62, 61, 0.04);
+    border: 1px solid rgba(74, 62, 61, 0.05);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.pet-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(255, 126, 103, 0.12);
+    border-color: rgba(255, 126, 103, 0.2);
+}
+
+/* 推荐卡片突出设计 */
+.featured-pet-card {
+    border: 2px solid #ff7e67;
+    background: #fffdfc;
+    box-shadow: 0 15px 35px rgba(255, 126, 103, 0.08);
+}
+
+.pet-badge {
+    position: absolute;
+    top: -15px;
+    right: 30px;
+    background: #ff7e67;
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(255, 126, 103, 0.3);
+}
+
+.pet-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 18px;
+    background: rgba(255, 126, 103, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: #ff7e67;
+    margin-bottom: 24px;
+    transition: all 0.3s ease;
+}
+
+.pet-card:hover .pet-icon-wrapper {
+    background: #ff7e67;
+    color: #ffffff;
+    transform: scale(1.05) rotate(5deg);
+}
+
+.pet-card h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #382c2b;
+    margin-bottom: 16px;
+}
+
+.pet-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #726260;
+    margin-bottom: 30px;
+    flex-grow: 1;
+}
+
+.pet-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(74, 62, 61, 0.08);
+}
+
+.pet-price {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #382c2b;
+}
+
+.pet-price small {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #726260;
+}
+
+.pet-btn {
+    background: #ff7e67;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(255, 126, 103, 0.2);
+    transition: all 0.3s ease;
+}
+
+.pet-btn:hover {
+    background: #e66650;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 126, 103, 0.3);
+    color: #ffffff;
+}
+
+.pet-btn i {
+    font-size: 1.1rem;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .pet-grooming-section {
+        margin: 20px 10px;
+        padding: 60px 20px;
+        border-radius: 24px;
+    }
+}
