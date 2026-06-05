@@ -54,7 +54,32 @@
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+        }
+
+        .pet-nav-logo-img {
+            height: 32px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .pet-hero-logo-container {
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pet-hero-logo {
+            height: 110px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 12px rgba(74, 62, 61, 0.08));
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .pet-hero-logo:hover {
+            transform: scale(1.06) rotate(1deg);
         }
 
         .pet-nav-back {
@@ -207,7 +232,7 @@
     <header class="pet-page-header">
         <div class="pet-nav-container">
             <a href="#" class="pet-nav-logo">
-                <i class="fa-solid fa-paw"></i> Mr.pet pet grooming
+                <img src="mrpet_logo.png" alt="Mr.pet Logo" class="pet-nav-logo-img"> Mr.pet pet grooming
             </a>
             <a href="index.html" class="pet-nav-back">
                 <i class="fa-solid fa-arrow-left"></i> 返回 Airtis Creative 官网
@@ -219,6 +244,9 @@
          HERO / 首屏
          ========================================== -->
     <section class="pet-hero">
+        <div class="pet-hero-logo-container">
+            <img src="mrpet_logo.png" alt="Mr.pet pet grooming Logo" class="pet-hero-logo">
+        </div>
         <h1>Mr.pet pet grooming</h1>
         <p>专业美容师携带整套洗护工具上门服务！免除您的爱宠乘车奔波与到店排队焦虑，在熟悉舒适的家中，享受最温和、最精致的洗护与定制造型设计。</p>
         <a href="https://wa.me/60108781750" target="_blank" rel="noopener" class="pet-btn" style="padding: 14px 28px; font-size: 1rem; border-radius: 16px;">

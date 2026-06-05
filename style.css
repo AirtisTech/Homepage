@@ -1240,13 +1240,41 @@ button, input, textarea {
     text-align: left;
 }
 
+.mr-pet-header-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.mr-pet-logo-badge {
+    background: #ffffff;
+    padding: 6px 16px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.mr-pet-logo-badge:hover {
+    transform: scale(1.05);
+}
+
+.mr-pet-banner-logo {
+    height: 30px;
+    width: auto;
+    object-fit: contain;
+}
+
 .mr-pet-tag {
     font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     color: #ff7e67;
-    margin-bottom: 16px;
     display: inline-flex;
     align-items: center;
     gap: 8px;
