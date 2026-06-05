@@ -703,6 +703,21 @@ button, input, textarea {
     align-items: start;
 }
 
+/* TikTok cards: no fixed height, allow iframe to expand naturally */
+.tiktok-card {
+    overflow: visible !important;
+}
+
+.tiktok-card > div:first-child {
+    overflow: visible !important;
+    height: auto !important;
+}
+
+.tiktok-embed {
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
 .portfolio-item {
     overflow: hidden;
     display: flex;

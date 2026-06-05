@@ -80,17 +80,24 @@ async function loadPortfolio() {
             itemDiv.className = `portfolio-item glass-card`;
             itemDiv.setAttribute('data-category', data.category);
 
-            // Create media wrapper
-            let mediaContent = '';
-            
+
             if (embedUrl.includes('tiktok.com')) {
+                // TikTok: special vertical card layout - NO overflow:hidden, no fixed height
                 const videoId = tiktokMatch ? tiktokMatch[1] : '';
-                mediaContent = `
-                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@tiktok/video/${videoId}" data-video-id="${videoId}" style="max-width: 100%; min-width: 280px; margin: 0; padding: 0;">
-                        <section></section>
-                    </blockquote>
+                itemDiv.className = `portfolio-item glass-card tiktok-card`;
+                itemDiv.innerHTML = `
+                    <div style="padding: 0; position: relative;">
+                        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/video/${videoId}" data-video-id="${videoId}" style="max-width: 100%; min-width: 0; margin: 0; padding: 0; border: none; background: transparent;">
+                            <section></section>
+                        </blockquote>
+                    </div>
+                    <div class="portfolio-info" style="padding: 20px 25px 25px;">
+                        <span class="portfolio-cat">${catName}</span>
+                        <h3 style="margin-top: 10px; margin-bottom: 10px; font-size: 1.25rem;">${data.title}</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;">${data.description}</p>
+                    </div>
                 `;
-                // Dynamically load TikTok script if not already loaded
+                // Load TikTok embed script once
                 setTimeout(() => {
                     if (!document.getElementById('tiktok-embed-script')) {
                         const script = document.createElement('script');
@@ -98,30 +105,32 @@ async function loadPortfolio() {
                         script.src = 'https://www.tiktok.com/embed.js';
                         script.async = true;
                         document.body.appendChild(script);
-                    } else if (window.tiktokEmbed) {
-                        // Attempt to reload if library exists
-                        // TikTok embed script automatically searches for blockquotes periodically, 
-                        // but if needed we could force reload, usually just appending works.
+                    } else if (window.__tiktok_embed_initialized) {
+                        // Force re-scan if TikTok script already loaded
+                        const existingScript = document.getElementById('tiktok-embed-script');
+                        existingScript.remove();
+                        const newScript = document.createElement('script');
+                        newScript.id = 'tiktok-embed-script';
+                        newScript.src = 'https://www.tiktok.com/embed.js';
+                        newScript.async = true;
+                        document.body.appendChild(newScript);
                     }
-                }, 50);
-            } else if (isVideo) {
-                mediaContent = `<iframe src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; height: 220px; border-radius: 12px 12px 0 0; display: block;"></iframe>`;
+                    window.__tiktok_embed_initialized = true;
+                }, 100);
             } else {
-                // If it's an image
-                mediaContent = `<div style="width: 100%; height: 220px; background-image: url('${embedUrl}'); background-size: cover; background-position: center; border-radius: 12px 12px 0 0;"></div>`;
+                itemDiv.innerHTML = `
+                    <div style="border-radius: 12px 12px 0 0; overflow: hidden; position: relative;">
+                        ${isVideo ? `<iframe src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; height: 220px; border-radius: 12px 12px 0 0; display: block;"></iframe>` 
+                        : `<div style="width: 100%; height: 220px; background-image: url('${embedUrl}'); background-size: cover; background-position: center; border-radius: 12px 12px 0 0;"></div>`}
+                        ${!isVideo && !embedUrl.match(/\.(jpeg|jpg|gif|png)$/i) ? `<div class="portfolio-placeholder-img img-${data.category}" style="position:absolute; top:0; left:0; right:0; bottom:0; display:flex; justify-content:center; align-items:center;"><i class="${iconClass}"></i></div>` : ''}
+                    </div>
+                    <div class="portfolio-info" style="padding: 25px;">
+                        <span class="portfolio-cat">${catName}</span>
+                        <h3 style="margin-top: 10px; margin-bottom: 10px; font-size: 1.25rem;">${data.title}</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;">${data.description}</p>
+                    </div>
+                `;
             }
-
-            itemDiv.innerHTML = `
-                <div style="border-radius: 12px 12px 0 0; overflow: hidden; position: relative;">
-                    ${mediaContent}
-                    ${!isVideo && !embedUrl.match(/\.(jpeg|jpg|gif|png)$/i) ? `<div class="portfolio-placeholder-img img-${data.category}" style="position:absolute; top:0; left:0; right:0; bottom:0; display:flex; justify-content:center; align-items:center;"><i class="${iconClass}"></i></div>` : ''}
-                </div>
-                <div class="portfolio-info" style="padding: 25px;">
-                    <span class="portfolio-cat">${catName}</span>
-                    <h3 style="margin-top: 10px; margin-bottom: 10px; font-size: 1.25rem;">${data.title}</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;">${data.description}</p>
-                </div>
-            `;
             
             grid.appendChild(itemDiv);
         });
