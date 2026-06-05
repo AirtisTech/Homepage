@@ -267,52 +267,17 @@
 
                 <div class="portfolio-filter-container">
                     <button class="filter-btn active" data-filter="all">全部</button>
+                    <button class="filter-btn" data-filter="photo">商业摄影 / 视频</button>
                     <button class="filter-btn" data-filter="design">UI/UX 设计</button>
                     <button class="filter-btn" data-filter="dev">技术开发</button>
                     <button class="filter-btn" data-filter="brand">品牌创意</button>
                 </div>
 
                 <div class="portfolio-grid" id="portfolio-grid">
-                    <!-- 项目 1 -->
-                    <div class="portfolio-item glass-card" data-category="design">
-                        <div class="portfolio-img-wrapper">
-                            <div class="portfolio-placeholder-img img-design">
-                                <i class="fa-solid fa-wand-magic-sparkles"></i>
-                            </div>
-                        </div>
-                        <div class="portfolio-info">
-                            <span class="portfolio-cat">UI/UX 设计</span>
-                            <h3>未来资产管理平台 Dashboard</h3>
-                            <p>为前沿金融科技品牌打造的、具备极致毛玻璃视觉体验的后台管理界面。</p>
-                        </div>
-                    </div>
-
-                    <!-- 项目 2 -->
-                    <div class="portfolio-item glass-card" data-category="dev">
-                        <div class="portfolio-img-wrapper">
-                            <div class="portfolio-placeholder-img img-dev">
-                                <i class="fa-solid fa-server"></i>
-                            </div>
-                        </div>
-                        <div class="portfolio-info">
-                            <span class="portfolio-cat">技术开发</span>
-                            <h3>跨境电商极速 WebApp</h3>
-                            <p>基于 Next.js 14 开发的高响应式、无缝体验的免税商品零售平台。</p>
-                        </div>
-                    </div>
-
-                    <!-- 项目 3 -->
-                    <div class="portfolio-item glass-card" data-category="brand">
-                        <div class="portfolio-img-wrapper">
-                            <div class="portfolio-placeholder-img img-brand">
-                                <i class="fa-solid fa-bezier-curve"></i>
-                            </div>
-                        </div>
-                        <div class="portfolio-info">
-                            <span class="portfolio-cat">品牌创意</span>
-                            <h3>Nebula 智能硬件视觉识别系统</h3>
-                            <p>包含完整视觉规范手册、三维概念动画及全套产品包装设计方案。</p>
-                        </div>
+                    <!-- Firebase 数据将会加载到这里 -->
+                    <div style="text-align: center; grid-column: 1 / -1; padding: 40px; color: var(--text-secondary);">
+                        <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
+                        <p style="margin-top: 15px;">正在加载最新作品...</p>
                     </div>
                 </div>
             </div>
@@ -408,5 +373,6 @@
 
     <!-- Custom JavaScript -->
     <script src="app.js"></script>
+    <script type="module" src="portfolio.js"></script>
 </body>
 </html>
