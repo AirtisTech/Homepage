@@ -1250,8 +1250,8 @@ button, input, textarea {
 
 .mr-pet-logo-badge {
     background: #ffffff;
-    padding: 6px 16px;
-    border-radius: 12px;
+    padding: 8px 20px;
+    border-radius: 16px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -1264,7 +1264,7 @@ button, input, textarea {
 }
 
 .mr-pet-banner-logo {
-    height: 30px;
+    height: 60px;
     width: auto;
     object-fit: contain;
 }
