@@ -26,6 +26,8 @@ function processUrl(url) {
     const vimeoMatch = url.match(/vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)/);
     // Bilibili matches: b23.tv/xxx or bilibili.com/video/BVxxx
     const biliMatch = url.match(/bilibili\.com\/video\/(BV[a-zA-Z0-9]+)/);
+    // TikTok matches: tiktok.com/@user/video/ID
+    const tiktokMatch = url.match(/tiktok\.com\/@[\w.-]+\/video\/(\d+)/);
 
     if (ytMatch && ytMatch[1]) {
         embedUrl = `https://www.youtube.com/embed/${ytMatch[1]}`;
@@ -35,6 +37,9 @@ function processUrl(url) {
         isVideo = true;
     } else if (biliMatch && biliMatch[1]) {
         embedUrl = `https://player.bilibili.com/player.html?bvid=${biliMatch[1]}&page=1`;
+        isVideo = true;
+    } else if (tiktokMatch && tiktokMatch[1]) {
+        embedUrl = `https://www.tiktok.com/embed/v2/${tiktokMatch[1]}`;
         isVideo = true;
     } else {
         // Assume it's a direct image URL or unsupported video (fallback to just linking or treating as image)
