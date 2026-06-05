@@ -92,7 +92,7 @@ async function loadPortfolio() {
                 <div class="portfolio-info" style="padding: 25px;">
                     <span class="portfolio-cat">${catName}</span>
                     <h3 style="margin-top: 10px; margin-bottom: 10px; font-size: 1.25rem;">${data.title}</h3>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">${data.description}</p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;">${data.description}</p>
                 </div>
             `;
             
