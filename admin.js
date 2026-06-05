@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 
 // Firebase configuration from user
 const firebaseConfig = {
@@ -54,10 +54,24 @@ function showDashboard() {
 // Portfolio Form Handling
 const addForm = document.getElementById('add-portfolio-form');
 const saveBtn = document.getElementById('save-btn');
+const cancelEditBtn = document.getElementById('cancel-edit-btn');
+let loadedItems = {};
+
+function cancelEdit() {
+    document.getElementById('p-id').value = '';
+    addForm.reset();
+    if(cancelEditBtn) cancelEditBtn.style.display = 'none';
+    saveBtn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i> 保存并发布';
+}
+
+if(cancelEditBtn) {
+    cancelEditBtn.addEventListener('click', cancelEdit);
+}
 
 addForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
+    const pId = document.getElementById('p-id').value;
     const title = document.getElementById('p-title').value;
     const category = document.getElementById('p-category').value;
     const url = document.getElementById('p-url').value;
@@ -67,23 +81,37 @@ addForm.addEventListener('submit', async (e) => {
     saveBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> 保存中...';
 
     try {
-        await addDoc(portfolioRef, {
-            title: title,
-            category: category,
-            url: url,
-            description: desc,
-            createdAt: serverTimestamp()
-        });
+        if (pId) {
+            await updateDoc(doc(db, "portfolio", pId), {
+                title: title,
+                category: category,
+                url: url,
+                description: desc
+            });
+            alert('作品更新成功！');
+        } else {
+            await addDoc(portfolioRef, {
+                title: title,
+                category: category,
+                url: url,
+                description: desc,
+                createdAt: serverTimestamp()
+            });
+            alert('作品发布成功！返回首页即可查看。');
+        }
         
-        addForm.reset();
+        cancelEdit();
         loadPortfolio();
-        alert('作品发布成功！返回首页即可查看。');
     } catch (error) {
-        console.error("Error adding document: ", error);
-        alert('发布失败：' + error.message);
+        console.error("Error saving document: ", error);
+        alert('保存失败：' + error.message);
     } finally {
         saveBtn.disabled = false;
-        saveBtn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i> 保存并发布';
+        if (!document.getElementById('p-id').value) {
+            saveBtn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i> 保存并发布';
+        } else {
+            saveBtn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i> 更新发布';
+        }
     }
 });
 
@@ -106,6 +134,7 @@ async function loadPortfolio() {
         querySnapshot.forEach((docSnap) => {
             const data = docSnap.data();
             const id = docSnap.id;
+            loadedItems[id] = data;
             
             let catName = '';
             if(data.category === 'design') catName = 'UI/UX 设计';
@@ -120,9 +149,30 @@ async function loadPortfolio() {
                     <h4>${data.title}</h4>
                     <span>${catName}</span>
                 </div>
-                <button class="del-btn" data-id="${id}" title="删除"><i class="fa-solid fa-trash"></i></button>
+                <div>
+                    <button class="edit-btn" data-id="${id}" title="编辑"><i class="fa-solid fa-pen"></i></button>
+                    <button class="del-btn" data-id="${id}" title="删除"><i class="fa-solid fa-trash"></i></button>
+                </div>
             `;
             listContainer.appendChild(div);
+        });
+
+        // Attach edit events
+        document.querySelectorAll('.edit-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = e.currentTarget.getAttribute('data-id');
+                const data = loadedItems[id];
+                document.getElementById('p-id').value = id;
+                document.getElementById('p-title').value = data.title;
+                document.getElementById('p-category').value = data.category;
+                document.getElementById('p-url').value = data.url;
+                document.getElementById('p-desc').value = data.description || '';
+                
+                if(cancelEditBtn) cancelEditBtn.style.display = 'block';
+                saveBtn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i> 更新发布';
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
 
         // Attach delete events

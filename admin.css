@@ -215,16 +215,18 @@ select option {
     border-radius: 10px;
 }
 
-.del-btn {
+.del-btn, .edit-btn {
     background: transparent;
     border: none;
-    color: #ff4d4d;
     cursor: pointer;
     font-size: 1.2rem;
     padding: 5px;
     transition: transform 0.2s;
 }
 
-.del-btn:hover {
+.del-btn { color: #ff4d4d; }
+.edit-btn { color: var(--color-secondary); margin-right: 10px; }
+
+.del-btn:hover, .edit-btn:hover {
     transform: scale(1.1);
 }

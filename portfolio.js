@@ -26,8 +26,8 @@ function processUrl(url) {
     const vimeoMatch = url.match(/vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)/);
     // Bilibili matches: b23.tv/xxx or bilibili.com/video/BVxxx
     const biliMatch = url.match(/bilibili\.com\/video\/(BV[a-zA-Z0-9]+)/);
-    // TikTok matches: tiktok.com/@user/video/ID
-    const tiktokMatch = url.match(/tiktok\.com\/@[\w.-]+\/video\/(\d+)/);
+    // TikTok matches: tiktok.com/xxx/video/ID or video/ID
+    const tiktokMatch = url.match(/tiktok\.com\/.*video\/(\d+)/);
 
     if (ytMatch && ytMatch[1]) {
         embedUrl = `https://www.youtube.com/embed/${ytMatch[1]}`;

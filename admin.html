@@ -55,9 +55,15 @@
                         <label>作品简介</label>
                         <textarea id="p-desc" rows="3" placeholder="简短描述该作品..."></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary" id="save-btn">
-                        <i class="fa-solid fa-cloud-arrow-up"></i> 保存并发布
-                    </button>
+                    <input type="hidden" id="p-id" value="">
+                    <div style="display: flex; gap: 10px;">
+                        <button type="submit" class="btn btn-primary" id="save-btn" style="flex: 1;">
+                            <i class="fa-solid fa-cloud-arrow-up"></i> 保存并发布
+                        </button>
+                        <button type="button" class="btn btn-outline" id="cancel-edit-btn" style="display: none;">
+                            取消
+                        </button>
+                    </div>
                 </form>
             </div>
             
