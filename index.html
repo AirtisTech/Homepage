@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airtis Creative Enterprise - 数字化设计与技术解决方案</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Airtis Creative Enterprise 致力于提供高端数字化设计、定制软件开发及创新品牌策划，以科技与创意赋能您的企业。">
+    <meta name="keywords" content="Airtis, Creative, Enterprise, 网页设计, 软件开发, 品牌策划, 创意设计">
+    <meta name="author" content="Airtis Creative Enterprise">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==========================================
+         HEADER / 导航栏
+         ========================================== -->
+    <header id="main-header" class="header">
+        <div class="container header-container">
+            <a href="#" id="header-logo" class="logo">
+                <span class="logo-accent">Airtis</span> Creative
+            </a>
+            
+            <nav id="nav-menu" class="nav-links">
+                <a href="#hero" class="nav-link active">首页</a>
+                <a href="#services" class="nav-link">服务</a>
+                <a href="#about" class="nav-link">关于我们</a>
+                <a href="#portfolio" class="nav-link">案例展示</a>
+                <a href="#contact" class="nav-link">联系我们</a>
+            </nav>
+
+            <button id="mobile-menu-toggle" class="mobile-toggle" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- ==========================================
+             HERO SECTION / 首屏展示
+             ========================================== -->
+        <section id="hero" class="hero-section">
+            <div class="hero-bg-gradient"></div>
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <span class="hero-tagline">设计未来，科技赋能</span>
+                    <h1 id="hero-main-title" class="hero-title">
+                        用创意重塑<br><span class="text-gradient">数字世界</span>
+                    </h1>
+                    <p class="hero-desc">我们是一家专注于高水准交互设计、视觉传达及前沿软件工程的创新企业。致力于将您的商业灵感转化为极致的数字化体验。</p>
+                    <div class="hero-buttons">
+                        <a href="#portfolio" class="btn btn-primary" id="btn-hero-explore">浏览案例</a>
+                        <a href="#contact" class="btn btn-outline" id="btn-hero-contact">与我们聊聊</a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <a href="#services" aria-label="Scroll Down"><i class="fa-solid fa-chevron-down"></i></a>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SERVICES SECTION / 服务项目
+             ========================================== -->
+        <section id="services" class="services-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">核心服务</h2>
+                    <p class="section-subtitle">我们提供全方位的数字化转型解决方案，助您的品牌在数字时代脱颖而出。</p>
+                </div>
+                
+                <div class="services-grid">
+                    <!-- 服务卡片 1 -->
+                    <div class="service-card glass-card" id="service-uiux">
+                        <div class="service-icon">
+                            <i class="fa-solid fa-compass-drafting"></i>
+                        </div>
+                        <h3>UI/UX 体验设计</h3>
+                        <p>以用户为中心，雕琢每一个交互细节，提供极致、直观且具备高转化率的数字化界面设计。</p>
+                    </div>
+
+                    <!-- 服务卡片 2 -->
+                    <div class="service-card glass-card" id="service-dev">
+                        <div class="service-icon">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h3>定制化软件开发</h3>
+                        <p>前端与后端的深度融合。采用现代技术栈（Next.js, Vue, Node.js）构建高性能、高安全性的 Web 与移动端应用。</p>
+                    </div>
+
+                    <!-- 服务卡片 3 -->
+                    <div class="service-card glass-card" id="service-branding">
+                        <div class="service-icon">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <h3>品牌与视觉策划</h3>
+                        <p>从品牌策略、VI 设计系统到多媒体创意呈现，为您的品牌重塑独特的数字个性和传播力。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             ABOUT SECTION / 关于我们 & 业务介绍 (用户编辑区)
+             ========================================== -->
+        <section id="about" class="about-section section-padding">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content">
+                        <span class="section-tag">About Us</span>
+                        <h2 class="section-title text-left">关于 Airtis Creative</h2>
+                        
+                        <!-- 
+                            ==================================================
+                            📝【可编辑区 1/2】: 业务介绍 / 公司故事 
+                            在下方 <div class="editable-business-intro"> ... </div> 内，
+                            您可以随意修改、替换、增加任何关于您公司的业务介绍和文字内容。
+                            ==================================================
+                        -->
+                        <div class="editable-business-intro" id="user-business-intro">
+                            <p class="lead-text">
+                                我们由一群对设计充满热忱、对技术执着追求的跨界专家组成。
+                            </p>
+                            <p>
+                                Airtis Creative Enterprise 成立的初衷是打破创意与技术之间的壁垒。我们不单单提供代码，更提供能触动人心的视觉体验；我们不单单提供视觉，更提供能稳定运行、弹性扩展的技术架构。
+                            </p>
+                            <p>
+                                无论是初创公司需要建立首个数字化品牌，还是成熟企业需要重构复杂的业务系统，我们都能作为您最可靠的创意与技术伙伴，共同探索商业增长的新空间。
+                            </p>
+                        </div>
+                        <!-- ================================================== -->
+                        
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <span class="stat-num">50+</span>
+                                <span class="stat-label">交付项目</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-num">98%</span>
+                                <span class="stat-label">客户满意度</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-num">5+</span>
+                                <span class="stat-label">行业经验</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-visual">
+                        <!-- 互动式毛玻璃视觉卡片 -->
+                        <div class="visual-glass-block">
+                            <div class="g-circle circle-1"></div>
+                            <div class="g-circle circle-2"></div>
+                            <div class="visual-content-card glass-card">
+                                <h4>设计理念</h4>
+                                <p>"让每一像素都有它存在的理由，让每一行代码都有它跃动的生命力。"</p>
+                                <span class="quote-author">— Airtis Creative Design Team</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             PORTFOLIO SECTION / 案例展示
+             ========================================== -->
+        <section id="portfolio" class="portfolio-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">案例展示</h2>
+                    <p class="section-subtitle">精选我们在不同领域所创作的数字化体验与创新成果。</p>
+                </div>
+
+                <div class="portfolio-filter-container">
+                    <button class="filter-btn active" data-filter="all">全部</button>
+                    <button class="filter-btn" data-filter="design">UI/UX 设计</button>
+                    <button class="filter-btn" data-filter="dev">技术开发</button>
+                    <button class="filter-btn" data-filter="brand">品牌创意</button>
+                </div>
+
+                <div class="portfolio-grid" id="portfolio-grid">
+                    <!-- 项目 1 -->
+                    <div class="portfolio-item glass-card" data-category="design">
+                        <div class="portfolio-img-wrapper">
+                            <div class="portfolio-placeholder-img img-design">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <span class="portfolio-cat">UI/UX 设计</span>
+                            <h3>未来资产管理平台 Dashboard</h3>
+                            <p>为前沿金融科技品牌打造的、具备极致毛玻璃视觉体验的后台管理界面。</p>
+                        </div>
+                    </div>
+
+                    <!-- 项目 2 -->
+                    <div class="portfolio-item glass-card" data-category="dev">
+                        <div class="portfolio-img-wrapper">
+                            <div class="portfolio-placeholder-img img-dev">
+                                <i class="fa-solid fa-server"></i>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <span class="portfolio-cat">技术开发</span>
+                            <h3>跨境电商极速 WebApp</h3>
+                            <p>基于 Next.js 14 开发的高响应式、无缝体验的免税商品零售平台。</p>
+                        </div>
+                    </div>
+
+                    <!-- 项目 3 -->
+                    <div class="portfolio-item glass-card" data-category="brand">
+                        <div class="portfolio-img-wrapper">
+                            <div class="portfolio-placeholder-img img-brand">
+                                <i class="fa-solid fa-bezier-curve"></i>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <span class="portfolio-cat">品牌创意</span>
+                            <h3>Nebula 智能硬件视觉识别系统</h3>
+                            <p>包含完整视觉规范手册、三维概念动画及全套产品包装设计方案。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             CONTACT SECTION / 联系我们 (用户编辑区)
+             ========================================== -->
+        <section id="contact" class="contact-section section-padding">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info-card glass-card">
+                        <h2 class="section-title text-left">开始您的项目</h2>
+                        <p>无论您是想要咨询业务、提出建议，还是开启一个全新的合作项目，我们的创意专家随时在这里倾听。</p>
+                        
+                        <div class="info-list">
+                            <!-- 
+                                ==================================================
+                                📝【可编辑区 2/2】: 联系方式 / 邮箱 
+                                您可以在下方的各个 <div> 中，
+                                将您的实际邮箱、电话、办公地址等替换为您自己的真实信息。
+                                ==================================================
+                            -->
+                            <div class="info-item" id="user-contact-email">
+                                <div class="info-icon">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div class="info-text">
+                                    <span>联系邮箱</span>
+                                    <p>hello@airtis.tech</p> <!-- 👈 替换为您真实的邮箱 -->
+                                </div>
+                            </div>
+
+                            <div class="info-item" id="user-contact-phone">
+                                <div class="info-icon">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div class="info-text">
+                                    <span>咨询电话</span>
+                                    <p>+86 10-8888-8888</p> <!-- 👈 替换您的电话 -->
+                                </div>
+                            </div>
+
+                            <div class="info-item" id="user-contact-address">
+                                <div class="info-icon">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div class="info-text">
+                                    <span>办公地址</span>
+                                    <p>中国·北京·朝阳区创意产业园 A1 栋</p> <!-- 👈 替换您的地址 -->
+                                </div>
+                            </div>
+                            <!-- ================================================== -->
+                        </div>
+                    </div>
+
+                    <div class="contact-form-card glass-card">
+                        <h3>留言咨询</h3>
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-group">
+                                <label for="form-name">您的姓名</label>
+                                <input type="text" id="form-name" required placeholder="例如：张先生">
+                            </div>
+                            <div class="form-group">
+                                <label for="form-email">您的邮箱</label>
+                                <input type="email" id="form-email" required placeholder="例如：client@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="form-message">您的需求简述</label>
+                                <textarea id="form-message" rows="5" required placeholder="请简要描述您的项目需求或咨询问题..."></textarea>
+                            </div>
+                            <button type="submit" id="btn-submit-form" class="btn btn-primary btn-block">发送留言</button>
+                        </form>
+                        <div id="form-status-msg" class="status-msg hide"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================
+         FOOTER / 页脚
+         ========================================== -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <p>&copy; 2026 Airtis Creative Enterprise. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="#hero">返回顶部</a>
+                <a href="https://github.com/AirtisTech/Homepage" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
