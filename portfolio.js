@@ -82,8 +82,10 @@ async function loadPortfolio() {
 
             // Create media wrapper
             let mediaContent = '';
+            let mediaHeight = embedUrl.includes('tiktok.com') ? '580px' : '220px';
+            
             if (isVideo) {
-                mediaContent = `<iframe src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; height: 220px; border-radius: 12px 12px 0 0; display: block;"></iframe>`;
+                mediaContent = `<iframe src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; height: ${mediaHeight}; border-radius: 12px 12px 0 0; display: block;"></iframe>`;
             } else {
                 // If it's an image
                 mediaContent = `<div style="width: 100%; height: 220px; background-image: url('${embedUrl}'); background-size: cover; background-position: center; border-radius: 12px 12px 0 0;"></div>`;
