@@ -21,8 +21,8 @@ function processUrl(url) {
     let isVideo = false;
     let tiktokVideoId = '';
 
-    // YouTube matches
-    const ytMatch = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
+    // YouTube matches: watch?v=, youtu.be/, embed/, shorts/
+    const ytMatch = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?|shorts)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
     // Vimeo matches
     const vimeoMatch = url.match(/vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)/);
     // Bilibili matches
@@ -110,7 +110,11 @@ async function loadPortfolio() {
                 itemDiv.innerHTML = `
                     <div style="border-radius: 12px 12px 0 0; overflow: hidden; position: relative;">
                         ${isVideo
-                            ? `<iframe src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; height: 220px; border-radius: 12px 12px 0 0; display: block;"></iframe>`
+                            ? (() => {
+                                const isShorts = data.url.includes('/shorts/');
+                                const h = isShorts ? '560px' : '220px';
+                                return `<iframe src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; height: ${h}; border-radius: 12px 12px 0 0; display: block;"></iframe>`;
+                              })()
                             : `<div style="width: 100%; height: 220px; background-image: url('${embedUrl}'); background-size: cover; background-position: center; border-radius: 12px 12px 0 0;"></div>`
                         }
                         ${!isVideo && !embedUrl.match(/\.(jpeg|jpg|gif|png)$/i) ? `<div class="portfolio-placeholder-img img-${data.category}" style="position:absolute;top:0;left:0;right:0;bottom:0;display:flex;justify-content:center;align-items:center;"><i class="${iconClass}"></i></div>` : ''}
