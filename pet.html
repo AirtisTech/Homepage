@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airtis 宠物洗护美容中心 - 高端专业宠物洗浴与造型设计</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Airtis 宠物洗护美容中心致力于为您的爱宠提供最温和、最专业的精致洗护、个性化造型修剪以及奢华微气泡 SPA 服务。">
+    <meta name="keywords" content="Airtis, 宠物美容, 宠物洗澡, 宠物造型, Alor Setar 宠物店, 吉打宠物美容">
+    <meta name="author" content="Airtis Pet Care">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Standalone overrides for Pet page to ensure fully bright and cozy theme */
+        body {
+            background: linear-gradient(135deg, #fffcf9 0%, #f7f1eb 100%);
+            color: #4a3e3d;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .pet-page-header {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(74, 62, 61, 0.05);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .pet-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .pet-nav-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #ff7e67;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pet-nav-back {
+            color: #726260;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pet-nav-back:hover {
+            color: #ff7e67;
+        }
+
+        .pet-hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px 40px;
+            text-align: center;
+        }
+
+        .pet-hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: #382c2b;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .pet-hero p {
+            font-size: 1.15rem;
+            color: #726260;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        /* Re-use and optimize grid from style.css */
+        .pet-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        .pet-details-section {
+            background: #ffffff;
+            border-radius: 30px;
+            padding: 50px 40px;
+            margin-top: 60px;
+            box-shadow: 0 15px 40px rgba(74, 62, 61, 0.04);
+            border: 1px solid rgba(74, 62, 61, 0.05);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .detail-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .detail-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 15px;
+            background: rgba(255, 126, 103, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #ff7e67;
+            flex-shrink: 0;
+        }
+
+        .detail-info h4 {
+            font-size: 1.1rem;
+            color: #382c2b;
+            margin: 0 0 8px 0;
+            font-weight: 700;
+        }
+
+        .detail-info p {
+            font-size: 0.95rem;
+            color: #726260;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .detail-info a {
+            color: #ff7e67;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .detail-info a:hover {
+            text-decoration: underline;
+        }
+
+        .pet-page-footer {
+            background: #382c2b;
+            color: #f7f1eb;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+        }
+
+        .pet-page-footer p {
+            margin: 0 0 15px 0;
+            color: #c5b8b6;
+        }
+
+        .pet-page-footer a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .pet-page-footer a:hover {
+            color: #ff7e67;
+        }
+
+        @media (max-width: 768px) {
+            .pet-hero h1 {
+                font-size: 2.2rem;
+            }
+            .pet-hero p {
+                font-size: 1rem;
+            }
+            .pet-details-section {
+                padding: 30px 20px;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+         HEADER / 导航栏
+         ========================================== -->
+    <header class="pet-page-header">
+        <div class="pet-nav-container">
+            <a href="#" class="pet-nav-logo">
+                <i class="fa-solid fa-paw"></i> Airtis Pet
+            </a>
+            <a href="index.html" class="pet-nav-back">
+                <i class="fa-solid fa-arrow-left"></i> 返回 Airtis Tech 官网
+            </a>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         HERO / 首屏
+         ========================================== -->
+    <section class="pet-hero">
+        <h1>Airtis 宠物洗护美容中心</h1>
+        <p>我们用最温和的产品、最专业的剪艺与最贴心的呵护，为您的爱宠量身定制精致洗护与时尚造型，让每一个毛孩子都散发自信光芒。</p>
+        <a href="https://wa.me/601165141754" target="_blank" rel="noopener" class="pet-btn" style="padding: 14px 28px; font-size: 1rem; border-radius: 16px;">
+            <i class="fa-brands fa-whatsapp"></i> 立即在线咨询
+        </a>
+    </section>
+
+    <!-- ==========================================
+         SERVICES / 服务项目
+         ========================================== -->
+    <main class="pet-container">
+        <div class="pet-services-grid" style="margin-top: 0;">
+            <!-- 服务 1 -->
+            <div class="pet-card">
+                <div class="pet-icon-wrapper">
+                    <i class="fa-solid fa-soap"></i>
+                </div>
+                <h3>基础精致洗护</h3>
+                <p class="pet-desc">包含精细双重沐浴（根据毛发选用专用洗发水）、毛发拉直与吹干、修剪趾甲与磨平、清理耳道、挤肛门腺、清理足底毛与腹底毛。</p>
+                <div class="pet-footer">
+                    <span class="pet-price">RM 45 <small>起</small></span>
+                    <a href="https://wa.me/601165141754?text=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E4%B8%BA%E6%88%91%E7%9A%84%E5%AE%A8%E7%89%A9%E9%A2%84%E7%BA%A6%E3%80%90%E5%9F%BA%E7%A1%80%E7%B2%BE%E8%87%B4%E6%B4%97%E6%8A%A4%E3%80%91%E6%9C%8D%E5%8A%A1%E3%80%82" target="_blank" rel="noopener" class="pet-btn">
+                        <i class="fa-brands fa-whatsapp"></i> 立即预约
+                    </a>
+                </div>
+            </div>
+
+            <!-- 服务 2 -->
+            <div class="pet-card featured-pet-card">
+                <div class="pet-badge">热门推荐</div>
+                <div class="pet-icon-wrapper">
+                    <i class="fa-solid fa-scissors"></i>
+                </div>
+                <h3>个性化造型修剪</h3>
+                <p class="pet-desc">包含基础洗护所有项目，并由资深美容师根据宠物的身形、脸型与毛质特点，进行精细的手工修整与极具时尚感的日系/韩式定制造型设计。</p>
+                <div class="pet-footer">
+                    <span class="pet-price">RM 80 <small>起</small></span>
+                    <a href="https://wa.me/601165141754?text=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E4%B8%BA%E6%88%91%E7%9A%84%E5%AE%A8%E7%89%A9%E9%A2%84%E7%BA%A6%E3%80%90%E4%B8%AA%E6%80%A7%E5%8C%96%E9%80%A0%E5%9E%8B%E4%BF%AE%E5%89%AA%E3%80%91%E6%9C%8D%E5%8A%A1%E3%80%82" target="_blank" rel="noopener" class="pet-btn">
+                        <i class="fa-brands fa-whatsapp"></i> 立即预约
+                    </a>
+                </div>
+            </div>
+
+            <!-- 服务 3 -->
+            <div class="pet-card">
+                <div class="pet-icon-wrapper">
+                    <i class="fa-solid fa-spa"></i>
+                </div>
+                <h3>奢华精油微气泡 SPA</h3>
+                <p class="pet-desc">采用纳米级微气泡水深层洁净毛囊，配合天然草本精油开背与皮毛滋养泥疗，有效舒缓皮肤发红、瘙痒与宠物的精神压力。</p>
+                <div class="pet-footer">
+                    <span class="pet-price">RM 120 <small>起</small></span>
+                    <a href="https://wa.me/601165141754?text=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E4%B8%BA%E6%88%91%E7%9A%84%E5%AE%A8%E7%89%A9%E9%A2%84%E7%BA%A6%E3%80%90%E5%A5%A2%E5%8D%8E%E7%B2%BE%E6%B2%B9%E5%BE%AE%E6%B0%94%E6%B3%A1%20SPA%E3%80%91%E6%9C%8D%E5%8A%A1%E3%80%82" target="_blank" rel="noopener" class="pet-btn">
+                        <i class="fa-brands fa-whatsapp"></i> 立即预约
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SHOP DETAILS / 门店详情
+             ========================================== -->
+        <div class="pet-details-section">
+            <div class="detail-card">
+                <div class="detail-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="detail-info">
+                    <h4>沙龙地址</h4>
+                    <p>Flat F2/14C, Taman Setia Jaya<br>Jalan Langgar, 05460 Alor Setar, Kedah</p>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-icon">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+                <div class="detail-info">
+                    <h4>营业时间</h4>
+                    <p>周一至周日：9:00 AM - 7:00 PM<br><span style="color: #ff7e67; font-weight: 600;">周二休息 / Tuesday Closed</span></p>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-icon">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <div class="detail-info">
+                    <h4>预约及咨询</h4>
+                    <p>WhatsApp: <a href="https://wa.me/601165141754" target="_blank" rel="noopener">+601165141754</a></p>
+                    <p>Email: <a href="mailto:vincechan@airtiscreative.com">vincechan@airtiscreative.com</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ==========================================
+         FOOTER / 页脚
+         ========================================== -->
+    <footer class="pet-page-footer">
+        <p>&copy; 2026 Airtis Pet Care. All Rights Reserved.</p>
+        <a href="index.html">
+            <i class="fa-solid fa-arrow-left"></i> 返回 Airtis Tech 数字化科技主页
+        </a>
+    </footer>
+
+</body>
+</html>
