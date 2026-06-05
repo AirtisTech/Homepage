@@ -19,14 +19,15 @@ const db = getFirestore(app);
 function processUrl(url) {
     let embedUrl = '';
     let isVideo = false;
+    let tiktokVideoId = '';
 
-    // YouTube matches: youtube.com/watch?v=ID, youtu.be/ID, youtube.com/embed/ID
+    // YouTube matches
     const ytMatch = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
-    // Vimeo matches: vimeo.com/ID
+    // Vimeo matches
     const vimeoMatch = url.match(/vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)/);
-    // Bilibili matches: b23.tv/xxx or bilibili.com/video/BVxxx
+    // Bilibili matches
     const biliMatch = url.match(/bilibili\.com\/video\/(BV[a-zA-Z0-9]+)/);
-    // TikTok matches: tiktok.com/xxx/video/ID or video/ID
+    // TikTok matches
     const tiktokMatch = url.match(/tiktok\.com\/.*video\/(\d+)/);
 
     if (ytMatch && ytMatch[1]) {
@@ -39,15 +40,15 @@ function processUrl(url) {
         embedUrl = `https://player.bilibili.com/player.html?bvid=${biliMatch[1]}&page=1`;
         isVideo = true;
     } else if (tiktokMatch && tiktokMatch[1]) {
-        embedUrl = `https://www.tiktok.com/embed/v2/${tiktokMatch[1]}`;
+        tiktokVideoId = tiktokMatch[1];
+        embedUrl = `tiktok:${tiktokVideoId}`; // sentinel value to detect TikTok
         isVideo = true;
     } else {
-        // Assume it's a direct image URL or unsupported video (fallback to just linking or treating as image)
         embedUrl = url;
         isVideo = false;
     }
 
-    return { embedUrl, isVideo };
+    return { embedUrl, isVideo, tiktokVideoId };
 }
 
 async function loadPortfolio() {
@@ -58,16 +59,16 @@ async function loadPortfolio() {
         const q = query(collection(db, "portfolio"), orderBy("createdAt", "desc"));
         const querySnapshot = await getDocs(q);
         
-        grid.innerHTML = ''; // Clear loading state
+        grid.innerHTML = '';
 
         if (querySnapshot.empty) {
-            grid.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary);">暂无展示项目，请到后台添加。</div>';
+            grid.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: var(--text-muted);">暂无展示项目，请到后台添加。</div>';
             return;
         }
 
         querySnapshot.forEach((docSnap) => {
             const data = docSnap.data();
-            const { embedUrl, isVideo } = processUrl(data.url);
+            const { embedUrl, isVideo, tiktokVideoId } = processUrl(data.url);
             
             let catName = '';
             let iconClass = 'fa-solid fa-star';
@@ -77,17 +78,14 @@ async function loadPortfolio() {
             else if(data.category === 'photo') { catName = '商业摄影 / 视频'; iconClass = 'fa-solid fa-camera'; }
 
             const itemDiv = document.createElement('div');
-            itemDiv.className = `portfolio-item glass-card`;
             itemDiv.setAttribute('data-category', data.category);
 
-
-            if (embedUrl.includes('tiktok.com')) {
-                // TikTok: special vertical card layout - NO overflow:hidden, no fixed height
-                const videoId = tiktokMatch ? tiktokMatch[1] : '';
-                itemDiv.className = `portfolio-item glass-card tiktok-card`;
+            if (tiktokVideoId) {
+                // TikTok: native blockquote embed — NO overflow:hidden, no fixed height
+                itemDiv.className = 'portfolio-item glass-card tiktok-card';
                 itemDiv.innerHTML = `
                     <div style="padding: 0; position: relative;">
-                        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/video/${videoId}" data-video-id="${videoId}" style="max-width: 100%; min-width: 0; margin: 0; padding: 0; border: none; background: transparent;">
+                        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/video/${tiktokVideoId}" data-video-id="${tiktokVideoId}" style="max-width: 100%; min-width: 0; margin: 0; padding: 0; border: none; background: transparent;">
                             <section></section>
                         </blockquote>
                     </div>
@@ -97,32 +95,25 @@ async function loadPortfolio() {
                         <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;">${data.description}</p>
                     </div>
                 `;
-                // Load TikTok embed script once
+                // Load or reload TikTok embed script
                 setTimeout(() => {
-                    if (!document.getElementById('tiktok-embed-script')) {
-                        const script = document.createElement('script');
-                        script.id = 'tiktok-embed-script';
-                        script.src = 'https://www.tiktok.com/embed.js';
-                        script.async = true;
-                        document.body.appendChild(script);
-                    } else if (window.__tiktok_embed_initialized) {
-                        // Force re-scan if TikTok script already loaded
-                        const existingScript = document.getElementById('tiktok-embed-script');
-                        existingScript.remove();
-                        const newScript = document.createElement('script');
-                        newScript.id = 'tiktok-embed-script';
-                        newScript.src = 'https://www.tiktok.com/embed.js';
-                        newScript.async = true;
-                        document.body.appendChild(newScript);
-                    }
-                    window.__tiktok_embed_initialized = true;
-                }, 100);
+                    const existing = document.getElementById('tiktok-embed-script');
+                    if (existing) existing.remove();
+                    const script = document.createElement('script');
+                    script.id = 'tiktok-embed-script';
+                    script.src = 'https://www.tiktok.com/embed.js';
+                    script.async = true;
+                    document.body.appendChild(script);
+                }, 150);
             } else {
+                itemDiv.className = 'portfolio-item glass-card';
                 itemDiv.innerHTML = `
                     <div style="border-radius: 12px 12px 0 0; overflow: hidden; position: relative;">
-                        ${isVideo ? `<iframe src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; height: 220px; border-radius: 12px 12px 0 0; display: block;"></iframe>` 
-                        : `<div style="width: 100%; height: 220px; background-image: url('${embedUrl}'); background-size: cover; background-position: center; border-radius: 12px 12px 0 0;"></div>`}
-                        ${!isVideo && !embedUrl.match(/\.(jpeg|jpg|gif|png)$/i) ? `<div class="portfolio-placeholder-img img-${data.category}" style="position:absolute; top:0; left:0; right:0; bottom:0; display:flex; justify-content:center; align-items:center;"><i class="${iconClass}"></i></div>` : ''}
+                        ${isVideo
+                            ? `<iframe src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; height: 220px; border-radius: 12px 12px 0 0; display: block;"></iframe>`
+                            : `<div style="width: 100%; height: 220px; background-image: url('${embedUrl}'); background-size: cover; background-position: center; border-radius: 12px 12px 0 0;"></div>`
+                        }
+                        ${!isVideo && !embedUrl.match(/\.(jpeg|jpg|gif|png)$/i) ? `<div class="portfolio-placeholder-img img-${data.category}" style="position:absolute;top:0;left:0;right:0;bottom:0;display:flex;justify-content:center;align-items:center;"><i class="${iconClass}"></i></div>` : ''}
                     </div>
                     <div class="portfolio-info" style="padding: 25px;">
                         <span class="portfolio-cat">${catName}</span>
@@ -135,7 +126,6 @@ async function loadPortfolio() {
             grid.appendChild(itemDiv);
         });
 
-        // Re-initialize filtering logic (since items are dynamically loaded)
         initializeFilters();
 
     } catch (error) {
