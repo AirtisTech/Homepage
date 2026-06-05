@@ -53,6 +53,10 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-main);
+}
+
 .container {
     width: 100%;
     max-width: 1200px;
@@ -370,10 +374,11 @@ button, input, textarea {
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 16px;
+    color: #ffffff;
 }
 
 .service-card p {
-    color: var(--text-muted);
+    color: #cbd5e1;
     font-size: 0.95rem;
     line-height: 1.6;
 }
@@ -410,7 +415,7 @@ button, input, textarea {
 }
 
 .editable-business-intro p {
-    color: var(--text-muted);
+    color: #cbd5e1;
     font-size: 1rem;
     margin-bottom: 16px;
 }
