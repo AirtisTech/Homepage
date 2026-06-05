@@ -82,10 +82,30 @@ async function loadPortfolio() {
 
             // Create media wrapper
             let mediaContent = '';
-            let mediaHeight = embedUrl.includes('tiktok.com') ? '580px' : '220px';
             
-            if (isVideo) {
-                mediaContent = `<iframe src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; height: ${mediaHeight}; border-radius: 12px 12px 0 0; display: block;"></iframe>`;
+            if (embedUrl.includes('tiktok.com')) {
+                const videoId = tiktokMatch ? tiktokMatch[1] : '';
+                mediaContent = `
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@tiktok/video/${videoId}" data-video-id="${videoId}" style="max-width: 100%; min-width: 280px; margin: 0; padding: 0;">
+                        <section></section>
+                    </blockquote>
+                `;
+                // Dynamically load TikTok script if not already loaded
+                setTimeout(() => {
+                    if (!document.getElementById('tiktok-embed-script')) {
+                        const script = document.createElement('script');
+                        script.id = 'tiktok-embed-script';
+                        script.src = 'https://www.tiktok.com/embed.js';
+                        script.async = true;
+                        document.body.appendChild(script);
+                    } else if (window.tiktokEmbed) {
+                        // Attempt to reload if library exists
+                        // TikTok embed script automatically searches for blockquotes periodically, 
+                        // but if needed we could force reload, usually just appending works.
+                    }
+                }, 50);
+            } else if (isVideo) {
+                mediaContent = `<iframe src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; height: 220px; border-radius: 12px 12px 0 0; display: block;"></iframe>`;
             } else {
                 // If it's an image
                 mediaContent = `<div style="width: 100%; height: 220px; background-image: url('${embedUrl}'); background-size: cover; background-position: center; border-radius: 12px 12px 0 0;"></div>`;
