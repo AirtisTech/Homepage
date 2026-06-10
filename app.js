@@ -101,7 +101,7 @@ const i18n = {
         founder_section_subtitle: "聆听技术与创意背后的掌舵人故事。",
         founder_name: "Vince Chan 曾天旺",
         founder_role: "创始人 & 首席执行官",
-        founder_quote: "\"在数字浪潮的潮头，我们不仅在构建网页与系统，更在用科技与设计的交织，为企业绘制未来的蓝图。\"",
+        founder_quote: "\"At the forefront of the digital wave, we are not just building websites and systems, but crafting the future blueprint for enterprises through the fusion of technology and design.\"",
 
         portfolio_subtitle_zh: "精选我们在不同领域所创作的数字化体验与创新成果。",
         portfolio_loading: "正在加载最新作品...",
