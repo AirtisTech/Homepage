@@ -91,13 +91,13 @@ const i18n = {
         about_stats_satisfaction: "客户满意度",
         about_stats_experience: "行业经验",
         about_design_title: "设计理念",
-        about_design_quote: ""让每一像素都有它存在的理由，让每一行代码都有它跃动的生命力。"",
+        about_design_quote: "\"让每一像素都有它存在的理由，让每一行代码都有它跃动的生命力。\"",
 
         founder_section_title: "创始人简介",
         founder_section_subtitle: "聆听技术与创意背后的掌舵人故事。",
         founder_name: "Vince Chan 曾天旺",
         founder_role: "创始人 & 首席执行官",
-        founder_quote: ""在数字浪潮的潮头，我们不仅在构建网页与系统，更在用科技与设计的交织，为企业绘制未来的蓝图。"",
+        founder_quote: "\"在数字浪潮的潮头，我们不仅在构建网页与系统，更在用科技与设计的交织，为企业绘制未来的蓝图。\"",
 
         portfolio_subtitle_zh: "精选我们在不同领域所创作的数字化体验与创新成果。",
         portfolio_loading: "正在加载最新作品...",
@@ -191,13 +191,13 @@ const i18n = {
         about_stats_satisfaction: "Client Satisfaction",
         about_stats_experience: "Years of Experience",
         about_design_title: "Design Philosophy",
-        about_design_quote: ""Every pixel must have its reason to exist, every line of code must have its vibrant life."",
+        about_design_quote: "\"Every pixel must have its reason to exist, every line of code must have its vibrant life.\"",
 
         founder_section_title: "Our Founder",
         founder_section_subtitle: "The story behind the vision of technology and creativity.",
         founder_name: "Vince Chan",
         founder_role: "Founder & CEO",
-        founder_quote: ""At the forefront of the digital wave, we are not just building websites and systems, but crafting the future blueprint for enterprises through the fusion of technology and design."",
+        founder_quote: "\"At the forefront of the digital wave, we are not just building websites and systems, but crafting the future blueprint for enterprises through the fusion of technology and design.\"",
 
         portfolio_subtitle_zh: "A curated selection of our digital experiences and creative innovations across diverse industries.",
         portfolio_loading: "Loading latest works...",

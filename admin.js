@@ -11,6 +11,33 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 
+// ========== TOAST / CONFIRM ==========
+function showToast(msg, type) {
+    var el = document.createElement('div');
+    el.className = 'toast toast-' + type;
+    el.innerHTML = msg;
+    document.body.appendChild(el);
+    setTimeout(function() { el.classList.add('show'); }, 10);
+    setTimeout(function() { el.classList.remove('show'); setTimeout(function() { el.remove(); }, 300); }, 3500);
+}
+function showConfirm(msg) {
+    return new Promise(function(resolve) {
+        var overlay = document.createElement('div');
+        overlay.className = 'confirm-overlay';
+        overlay.innerHTML =
+            '<div class="confirm-box glass-panel">' +
+            '<p>' + msg + '</p>' +
+            '<div class="confirm-actions">' +
+            '<button class="btn btn-outline confirm-cancel">取消</button>' +
+            '<button class="btn confirm-ok">确定</button>' +
+            '</div></div>';
+        document.body.appendChild(overlay);
+        overlay.querySelector('.confirm-ok').addEventListener('click', function() { overlay.remove(); resolve(true); });
+        overlay.querySelector('.confirm-cancel').addEventListener('click', function() { overlay.remove(); resolve(false); });
+        overlay.addEventListener('click', function(e) { if (e.target === overlay) { overlay.remove(); resolve(false); } });
+    });
+}
+
 // ========== AUTH ==========
 var loginEl = document.getElementById('login-container');
 var dashEl = document.getElementById('admin-dashboard');
@@ -136,16 +163,16 @@ addForm.addEventListener('submit', async function(e) {
     try {
         if (pId) {
             await db.collection("portfolio").doc(pId).update(formData);
-            alert('作品更新成功！');
+            showToast('✅ 作品更新成功！', 'success');
         } else {
             await db.collection("portfolio").add(Object.assign({}, formData, { createdAt: firebase.firestore.FieldValue.serverTimestamp() }));
-            alert('作品发布成功！返回首页即可查看。');
+            showToast('✅ 作品发布成功！返回首页即可查看。', 'success');
         }
         cancelEdit();
         loadPortfolio();
     } catch (error) {
         console.error("Error:", error);
-        alert('保存失败：' + (error.message || '请确认已在 Firebase Console 开通 Firestore 数据库'));
+        showToast('❌ 保存失败：' + (error.message || '请确认 Firestore 已开通'), 'error');
     } finally {
         saveBtn.disabled = false;
         saveBtn.innerHTML = pId ? '<i class="fa-solid fa-cloud-arrow-up"></i> 更新发布' : '<i class="fa-solid fa-cloud-arrow-up"></i> 保存并发布';
@@ -202,8 +229,9 @@ async function loadPortfolio() {
         });
         document.querySelectorAll('.del-btn').forEach(function(btn) {
             btn.addEventListener('click', async function(e) {
-                if (confirm('确定要删除这个作品吗？')) {
+                if (await showConfirm('确定要删除这个作品吗？')) {
                     await db.collection("portfolio").doc(e.currentTarget.getAttribute('data-id')).delete();
+                    showToast('🗑️ 作品已删除', 'success');
                     loadPortfolio();
                 }
             });

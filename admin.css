@@ -461,3 +461,69 @@ select option {
 .lang-field-btn:hover:not(.active) {
     color: var(--text-primary);
 }
+
+/* ========== TOAST NOTIFICATION ========== */
+.toast {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    z-index: 99999;
+    opacity: 0;
+    transform: translateX(40px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    max-width: 400px;
+}
+.toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+.toast-success {
+    background: rgba(16, 185, 129, 0.2);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #6ee7b7;
+}
+.toast-error {
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #fca5a5;
+}
+
+/* ========== CUSTOM CONFIRM MODAL ========== */
+.confirm-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99998;
+    backdrop-filter: blur(4px);
+}
+.confirm-box {
+    max-width: 400px;
+    text-align: center;
+    padding: 32px;
+}
+.confirm-box p {
+    font-size: 1rem;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+.confirm-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+.confirm-actions .btn {
+    width: auto;
+    padding: 10px 28px;
+    font-size: 0.9rem;
+}
