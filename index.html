@@ -88,44 +88,53 @@
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title" data-i18n="services_title">核心服务</h2>
-                    <p class="section-subtitle" data-i18n="services_subtitle">我们提供全方位的数字化转型解决方案，助您的品牌在数字时代脱颖而出。</p>
+                    <p class="section-subtitle" data-i18n="services_subtitle">以 AI 为核心驱动，融合创意设计与前沿技术，为您的品牌打造面向未来的数字化解决方案。</p>
                 </div>
                 
                 <div class="services-grid">
-                    <!-- 服务卡片 1 -->
-                    <div class="service-card glass-card" id="service-uiux">
+                    <!-- 服务卡片 1: AI 应用开发 -->
+                    <div class="service-card glass-card" id="service-ai-dev">
                         <div class="service-icon">
-                            <i class="fa-solid fa-compass-drafting"></i>
+                            <i class="fa-solid fa-brain"></i>
                         </div>
-                        <h3 data-i18n="service_uiux_title">UI/UX 体验设计</h3>
-                        <p data-i18n="service_uiux_desc">以用户为中心，雕琢每一个交互细节，提供极致、直观且具备高转化率的数字化界面设计。</p>
+                        <h3 data-i18n="service_ai_dev_title">AI 应用开发</h3>
+                        <p data-i18n="service_ai_dev_desc">基于大语言模型与前沿 AI 技术，为企业定制智能客服、自动化流程、数据分析等 AI 解决方案，驱动业务智能化升级。</p>
                     </div>
 
-                    <!-- 服务卡片 2 -->
+                    <!-- 服务卡片 2: AI 音乐与视频制作 -->
+                    <div class="service-card glass-card" id="service-ai-media">
+                        <div class="service-icon">
+                            <i class="fa-solid fa-music"></i>
+                        </div>
+                        <h3 data-i18n="service_ai_media_title">AI 音乐与视频制作</h3>
+                        <p data-i18n="service_ai_media_desc">利用 AI 生成技术创作原创音乐、品牌宣传视频、产品演示动画等多媒体内容，以低成本实现高品质创意输出。</p>
+                    </div>
+
+                    <!-- 服务卡片 3: AI 广告营销 -->
+                    <div class="service-card glass-card" id="service-ai-ad">
+                        <div class="service-icon">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+                        <h3 data-i18n="service_ai_ad_title">AI 广告营销</h3>
+                        <p data-i18n="service_ai_ad_desc">为客户打造 AI 驱动的广告创意——从脚本生成、多语言配音到 AI 虚拟主播、动态广告投放，让品牌营销更高效。</p>
+                    </div>
+
+                    <!-- 服务卡片 4: 定制化软件开发 -->
                     <div class="service-card glass-card" id="service-dev">
                         <div class="service-icon">
                             <i class="fa-solid fa-code"></i>
                         </div>
                         <h3 data-i18n="service_dev_title">定制化软件开发</h3>
-                        <p data-i18n="service_dev_desc">前端与后端的深度融合。采用现代技术栈（Next.js, Vue, Node.js）构建高性能、高安全性的 Web 与移动端应用。</p>
+                        <p data-i18n="service_dev_desc">前端与后端的深度融合。采用现代技术栈（React, Node.js, Flutter 等）构建高性能、高安全性的 Web 与移动端应用。</p>
                     </div>
 
-                    <!-- 服务卡片 3 -->
-                    <div class="service-card glass-card" id="service-branding">
-                        <div class="service-icon">
-                            <i class="fa-solid fa-lightbulb"></i>
-                        </div>
-                        <h3 data-i18n="service_brand_title">品牌与视觉策划</h3>
-                        <p data-i18n="service_brand_desc">从品牌策略、VI 设计系统到多媒体创意呈现，为您的品牌重塑独特的数字个性和传播力。</p>
-                    </div>
-
-                    <!-- 服务卡片 4 -->
+                    <!-- 服务卡片 5: 商业摄影 -->
                     <div class="service-card glass-card" id="service-photography">
                         <div class="service-icon">
                             <i class="fa-solid fa-camera"></i>
                         </div>
-                        <h3 data-i18n="service_photo_title">商业摄影与视频制作</h3>
-                        <p data-i18n="service_photo_desc">提供专业商业广告、产品静物、企业形象宣传片及活动记录的拍摄与后期包装，用高水准镜头叙述您的品牌故事。</p>
+                        <h3 data-i18n="service_photo_title">商业摄影</h3>
+                        <p data-i18n="service_photo_desc">提供专业产品静物、企业形象等拍摄服务，用高水准镜头语言呈现您的品牌故事。（此业务逐步过渡中）</p>
                     </div>
                 </div>
             </div>
@@ -248,10 +257,10 @@
 
                 <div class="portfolio-filter-container">
                     <button class="filter-btn active" data-filter="all" data-i18n="filter_all">全部</button>
-                    <button class="filter-btn" data-filter="photo" data-i18n="filter_photo">商业摄影 / 视频</button>
-                    <button class="filter-btn" data-filter="design" data-i18n="filter_design">UI/UX 设计</button>
+                    <button class="filter-btn" data-filter="ai" data-i18n="filter_ai">AI / 人工智能</button>
                     <button class="filter-btn" data-filter="dev" data-i18n="filter_dev">技术开发</button>
-                    <button class="filter-btn" data-filter="brand" data-i18n="filter_brand">品牌创意</button>
+                    <button class="filter-btn" data-filter="3d" data-i18n="filter_3d">3D 打印</button>
+                    <button class="filter-btn" data-filter="photo" data-i18n="filter_photo">商业摄影</button>
                 </div>
 
                 <div class="portfolio-grid" id="portfolio-grid">
