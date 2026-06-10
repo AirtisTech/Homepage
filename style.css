@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Airtis Creative Enterprise - Premium Style Sheets
+   ARTISTECH CREATIVE ENTERPRISE - Premium Style Sheets
    ========================================================================== */
 
 /* 1. 全局设计系统与变量声明 */
@@ -967,6 +967,64 @@ button, input, textarea {
     color: var(--color-primary);
 }
 
+/* 11. Language Toggle Button */
+.lang-toggle-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.lang-toggle-btn {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-glass);
+    border-radius: 20px;
+    padding: 4px 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-title);
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: var(--transition-smooth);
+    color: var(--text-muted);
+    user-select: none;
+}
+
+.lang-toggle-btn:hover {
+    border-color: var(--color-primary);
+    background: rgba(0, 242, 254, 0.06);
+}
+
+.lang-option {
+    padding: 2px 6px;
+    border-radius: 10px;
+    transition: var(--transition-smooth);
+    color: var(--text-muted);
+}
+
+.lang-option.active {
+    color: var(--color-primary);
+    background: rgba(0, 242, 254, 0.1);
+}
+
+.lang-divider {
+    color: rgba(255, 255, 255, 0.15);
+    font-size: 0.7rem;
+}
+
+/* Mobile: lang toggle inside slide-in nav */
+@media (max-width: 768px) {
+    .nav-links .lang-toggle-wrapper {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    .lang-toggle-btn {
+        padding: 6px 18px;
+        font-size: 0.9rem;
+    }
+}
+
 /* 11. 媒体查询 (响应式设计适配) */
 @media (max-width: 992px) {
     html {
@@ -1053,376 +1111,165 @@ button, input, textarea {
     }
 }
 
+
 /* ==========================================
-   PET GROOMING SECTION (明亮温暖对比风格)
-   ========================================== */
-.pet-grooming-section {
-    background: linear-gradient(135deg, #fffcf9 0%, #f7f1eb 100%);
-    color: #4a3e3d; /* 暖深褐文字 */
-    border-radius: 40px;
-    margin: 40px 20px;
-    padding: 100px 40px;
+     12. MODAL SYSTEM / 弹窗系统
+     ========================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalSlideUp {
+    from { opacity: 0; transform: translateY(30px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-content {
     position: relative;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 0;
+    animation: modalSlideUp 0.3s ease;
 }
 
-.pet-tag {
-    background: rgba(255, 126, 103, 0.1);
-    color: #ff7e67;
+.modal-content::-webkit-scrollbar { width: 6px; }
+.modal-content::-webkit-scrollbar-track { background: transparent; }
+.modal-content::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 10px; }
+
+.modal-close {
+    position: absolute;
+    top: 16px; right: 20px;
+    font-size: 2rem;
+    color: var(--text-muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.3s ease;
+    line-height: 1;
 }
 
-.pet-title {
-    color: #382c2b;
-}
+.modal-close:hover { color: var(--text-main); }
 
-.pet-subtitle {
-    color: #726260;
-}
-
-.pet-services-grid {
+/* Case Detail Modal */
+#case-modal-body {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
-    position: relative;
-    z-index: 2;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
 }
 
-.pet-card {
-    background: #ffffff;
-    border-radius: 24px;
-    padding: 40px 30px;
-    box-shadow: 0 10px 30px rgba(74, 62, 61, 0.04);
-    border: 1px solid rgba(74, 62, 61, 0.05);
+.modal-case-media {
+    border-radius: 20px 0 0 20px;
+    overflow: hidden;
+    min-height: 350px;
+}
+
+.modal-case-info {
+    padding: 35px;
     display: flex;
     flex-direction: column;
-    position: relative;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.pet-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(255, 126, 103, 0.12);
-    border-color: rgba(255, 126, 103, 0.2);
-}
-
-/* 推荐卡片突出设计 */
-.featured-pet-card {
-    border: 2px solid #ff7e67;
-    background: #fffdfc;
-    box-shadow: 0 15px 35px rgba(255, 126, 103, 0.08);
-}
-
-.pet-badge {
-    position: absolute;
-    top: -15px;
-    right: 30px;
-    background: #ff7e67;
-    color: #ffffff;
-    font-size: 0.8rem;
-    font-weight: 600;
-    padding: 6px 16px;
-    border-radius: 50px;
-    box-shadow: 0 4px 12px rgba(255, 126, 103, 0.3);
-}
-
-.pet-icon-wrapper {
-    width: 60px;
-    height: 60px;
-    border-radius: 18px;
-    background: rgba(255, 126, 103, 0.08);
+.modal-details-grid {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    color: #ff7e67;
-    margin-bottom: 24px;
-    transition: all 0.3s ease;
-}
-
-.pet-card:hover .pet-icon-wrapper {
-    background: #ff7e67;
-    color: #ffffff;
-    transform: scale(1.05) rotate(5deg);
-}
-
-.pet-card h3 {
-    font-size: 1.35rem;
-    font-weight: 700;
-    color: #382c2b;
-    margin-bottom: 16px;
-}
-
-.pet-desc {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #726260;
-    margin-bottom: 30px;
-    flex-grow: 1;
-}
-
-.pet-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 20px;
-    border-top: 1px dashed rgba(74, 62, 61, 0.08);
-}
-
-.pet-price {
-    font-family: var(--font-title);
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: #382c2b;
-}
-
-.pet-price small {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: #726260;
-}
-
-.pet-btn {
-    background: #ff7e67;
-    color: #ffffff;
-    font-size: 0.9rem;
-    font-weight: 600;
-    padding: 10px 20px;
-    border-radius: 12px;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 4px 15px rgba(255, 126, 103, 0.2);
-    transition: all 0.3s ease;
-}
-
-.pet-btn:hover {
-    background: #e66650;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 126, 103, 0.3);
-    color: #ffffff;
-}
-
-.pet-btn i {
-    font-size: 1.1rem;
-}
-
-/* 响应式调整 */
-@media (max-width: 768px) {
-    .pet-grooming-section {
-        margin: 20px 10px;
-        padding: 60px 20px;
-        border-radius: 24px;
-    }
-}
-
-/* ==========================================
-   HOMEPAGE INTEGRATION FOR PET SECTION (CTA & NAV)
-   ========================================== */
-.nav-btn-pet {
-    background: rgba(255, 126, 103, 0.15) !important;
-    color: #ff7e67 !important;
-    padding: 6px 14px !important;
-    border-radius: 50px !important;
-    border: 1px solid rgba(255, 126, 103, 0.3) !important;
-    font-weight: 600 !important;
-    transition: all 0.3s ease !important;
-}
-
-.nav-btn-pet:hover {
-    background: #ff7e67 !important;
-    color: #ffffff !important;
-    box-shadow: 0 4px 12px rgba(255, 126, 103, 0.2) !important;
-    border-color: #ff7e67 !important;
-}
-
-.mr-pet-section {
-    position: relative;
-}
-
-.mr-pet-banner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 50px;
-    padding: 60px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.05) 100%) !important;
-    border: 1px solid rgba(255, 126, 103, 0.2) !important;
-    position: relative;
-    overflow: hidden;
-    border-radius: 32px;
-}
-
-.mr-pet-banner::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: -100px;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(255, 126, 103, 0.12) 0%, transparent 70%);
-    transform: translateY(-50%);
-    z-index: 1;
-    pointer-events: none;
-}
-
-.mr-pet-content {
-    flex-grow: 1;
-    position: relative;
-    z-index: 2;
-    text-align: left;
-}
-
-.mr-pet-header-container {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-}
-
-.mr-pet-logo-badge {
-    background: #ffffff;
-    padding: 10px 24px;
-    border-radius: 16px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease;
-}
-
-.mr-pet-logo-badge:hover {
-    transform: scale(1.05);
-}
-
-.mr-pet-banner-logo {
-    height: 75px;
-    width: auto;
-    object-fit: contain;
-}
-
-.mr-pet-tag {
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #ff7e67;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255, 126, 103, 0.1);
-    padding: 6px 14px;
-    border-radius: 50px;
-}
-
-.mr-pet-title {
-    font-family: var(--font-title);
-    font-size: 2.2rem;
-    margin: 0 0 10px 0;
-    color: var(--text-main);
-    font-weight: 800;
-}
-
-.mr-pet-subtitle {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #ff7e67;
-    margin: 0 0 20px 0;
-}
-
-.mr-pet-description {
-    font-size: 1rem;
-    color: var(--text-muted);
-    line-height: 1.7;
-    margin: 0 0 30px 0;
-    max-width: 800px;
-}
-
-.mr-pet-highlights {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.highlight-item {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--text-main);
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.3s ease;
-}
-
-.highlight-item i {
-    color: #ff7e67;
-}
-
-.mr-pet-banner:hover .highlight-item {
-    border-color: rgba(255, 126, 103, 0.15);
-}
-
-.mr-pet-action {
-    flex-shrink: 0;
-    position: relative;
-    z-index: 2;
-}
-
-.mr-pet-btn {
-    background: #ff7e67 !important;
-    border-color: #ff7e67 !important;
-    box-shadow: 0 8px 25px rgba(255, 126, 103, 0.3) !important;
-    padding: 16px 32px !important;
-    font-size: 1rem !important;
-    font-weight: 600 !important;
-    border-radius: 16px !important;
-    color: #ffffff !important;
-    display: inline-flex;
-    align-items: center;
+    flex-direction: column;
     gap: 10px;
-    transition: all 0.3s ease;
+    margin-bottom: 20px;
 }
 
-.mr-pet-btn:hover {
-    background: #e66650 !important;
-    border-color: #e66650 !important;
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(255, 126, 103, 0.45) !important;
-    color: #ffffff !important;
+.modal-detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    border: 1px solid var(--border-glass);
 }
 
-@media (max-width: 992px) {
-    .mr-pet-banner {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 40px;
-        gap: 30px;
-    }
-    .mr-pet-action {
-        width: 100%;
-    }
-    .mr-pet-btn {
-        width: 100%;
-        text-align: center;
-        justify-content: center;
-    }
+.modal-detail-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-@media (max-width: 576px) {
-    .mr-pet-banner {
-        padding: 30px 20px;
+.modal-testimonial {
+    padding: 16px;
+    background: rgba(0, 242, 254, 0.03);
+    border: 1px solid rgba(0, 242, 254, 0.1);
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+/* Inquiry Modal */
+.modal-inquiry {
+    max-width: 550px;
+    padding: 40px;
+}
+
+/* Case Card Badges */
+.p-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border-glass);
+    border-radius: 20px;
+    color: var(--text-muted);
+}
+
+.p-badge-accent {
+    background: rgba(16, 185, 129, 0.08);
+    border-color: rgba(16, 185, 129, 0.2);
+    color: var(--color-accent);
+}
+
+.p-testimonial-preview {
+    font-size: 0.83rem;
+    color: var(--text-muted);
+    font-style: italic;
+    padding: 8px 12px;
+    background: rgba(0, 242, 254, 0.02);
+    border-left: 2px solid var(--color-primary);
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+/* Inquiry trigger inside detail modal */
+.inquiry-trigger-btn {
+    margin-top: auto;
+}
+
+/* Responsive modal */
+@media (max-width: 768px) {
+    #case-modal-body {
+        grid-template-columns: 1fr;
     }
-    .mr-pet-title {
-        font-size: 1.8rem;
+    .modal-case-media {
+        border-radius: 20px 20px 0 0;
+        min-height: 200px;
     }
-    .mr-pet-subtitle {
-        font-size: 1.1rem;
-    }
+    .modal-case-info { padding: 25px; }
+    .modal-inquiry { padding: 25px; }
 }

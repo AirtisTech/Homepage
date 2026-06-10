@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Airtis Creative Enterprise - 数字化设计与技术解决方案</title>
+    <title>ARTISTECH Creative Enterprise - 数字化设计与技术解决方案</title>
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Airtis Creative Enterprise 致力于提供高端数字化设计、定制软件开发及创新品牌策划，以科技与创意赋能您的企业。">
-    <meta name="keywords" content="Airtis, Creative, Enterprise, 网页设计, 软件开发, 品牌策划, 创意设计">
-    <meta name="author" content="Airtis Creative Enterprise">
+    <meta name="description" content="ARTISTECH Creative Enterprise 致力于提供高端数字化设计、定制软件开发及创新品牌策划，以科技与创意赋能您的企业。">
+    <meta name="keywords" content="ARTISTECH, Creative, Enterprise, 网页设计, 软件开发, 品牌策划, 创意设计">
+    <meta name="author" content="ARTISTECH Creative Enterprise">
+    <link rel="alternate" hreflang="zh" href="/index.html">
+    <link rel="alternate" hreflang="en" href="/index.html?lang=en">
     
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,19 +28,28 @@
     <header id="main-header" class="header">
         <div class="container header-container">
             <a href="#" id="header-logo" class="logo">
-                <img src="logo.png" alt="Airtis Logo" class="logo-img">
-                <span><span class="logo-accent">Airtis</span> Creative</span>
+                <img src="logo.png" alt="ARTISTECH Logo" class="logo-img">
+                <span><span class="logo-accent">ARTISTECH</span> Creative</span>
             </a>
             
             <nav id="nav-menu" class="nav-links">
-                <a href="#hero" class="nav-link active">首页</a>
-                <a href="#services" class="nav-link">服务</a>
-                <a href="#about" class="nav-link">关于我们</a>
-                <a href="#founder" class="nav-link">创始人</a>
-                <a href="#portfolio" class="nav-link">案例展示</a>
-                <a href="#contact" class="nav-link">联系我们</a>
-                <a href="pet.html" target="_blank" class="nav-link nav-btn-pet">Mr.pet 宠物美容 🐾</a>
+                <a href="#hero" class="nav-link active" data-i18n="nav_home">首页</a>
+                <a href="#services" class="nav-link" data-i18n="nav_services">服务</a>
+                <a href="#about" class="nav-link" data-i18n="nav_about">关于我们</a>
+                <a href="#founder" class="nav-link" data-i18n="nav_founder">创始人</a>
+                <a href="#portfolio" class="nav-link" data-i18n="nav_portfolio">案例展示</a>
+                <a href="#contact" class="nav-link" data-i18n="nav_contact">联系我们</a>
             </nav>
+
+
+            
+            <div class="lang-toggle-wrapper">
+                <button id="lang-toggle" class="lang-toggle-btn" aria-label="Switch Language">
+                    <span class="lang-option" data-lang="zh">中</span>
+                    <span class="lang-divider">/</span>
+                    <span class="lang-option" data-lang="en">EN</span>
+                </button>
+            </div>
 
             <button id="mobile-menu-toggle" class="mobile-toggle" aria-label="Toggle Menu">
                 <i class="fa-solid fa-bars"></i>
@@ -54,14 +65,14 @@
             <div class="hero-bg-gradient"></div>
             <div class="container hero-container">
                 <div class="hero-content">
-                    <span class="hero-tagline">设计未来，科技赋能</span>
+                    <span class="hero-tagline" data-i18n="hero_tagline">设计未来，科技赋能</span>
                     <h1 id="hero-main-title" class="hero-title">
-                        用创意重塑<br><span class="text-gradient">数字世界</span>
+                        <span data-i18n="hero_title1">用创意重塑</span><br><span class="text-gradient" data-i18n="hero_title2">数字世界</span>
                     </h1>
-                    <p class="hero-desc">我们是一家专注于高水准交互设计、视觉传达及前沿软件工程的创新企业。致力于将您的商业灵感转化为极致的数字化体验。</p>
+                    <p class="hero-desc" data-i18n="hero_desc">我们是一家专注于高水准交互设计、视觉传达及前沿软件工程的创新企业。致力于将您的商业灵感转化为极致的数字化体验。</p>
                     <div class="hero-buttons">
-                        <a href="#portfolio" class="btn btn-primary" id="btn-hero-explore">浏览案例</a>
-                        <a href="#contact" class="btn btn-outline" id="btn-hero-contact">与我们聊聊</a>
+                        <a href="#portfolio" class="btn btn-primary" id="btn-hero-explore" data-i18n="hero_btn_explore">浏览案例</a>
+                        <a href="#contact" class="btn btn-outline" id="btn-hero-contact" data-i18n="hero_btn_contact">与我们聊聊</a>
                     </div>
                 </div>
             </div>
@@ -76,8 +87,8 @@
         <section id="services" class="services-section section-padding">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">核心服务</h2>
-                    <p class="section-subtitle">我们提供全方位的数字化转型解决方案，助您的品牌在数字时代脱颖而出。</p>
+                    <h2 class="section-title" data-i18n="services_title">核心服务</h2>
+                    <p class="section-subtitle" data-i18n="services_subtitle">我们提供全方位的数字化转型解决方案，助您的品牌在数字时代脱颖而出。</p>
                 </div>
                 
                 <div class="services-grid">
@@ -86,8 +97,8 @@
                         <div class="service-icon">
                             <i class="fa-solid fa-compass-drafting"></i>
                         </div>
-                        <h3>UI/UX 体验设计</h3>
-                        <p>以用户为中心，雕琢每一个交互细节，提供极致、直观且具备高转化率的数字化界面设计。</p>
+                        <h3 data-i18n="service_uiux_title">UI/UX 体验设计</h3>
+                        <p data-i18n="service_uiux_desc">以用户为中心，雕琢每一个交互细节，提供极致、直观且具备高转化率的数字化界面设计。</p>
                     </div>
 
                     <!-- 服务卡片 2 -->
@@ -95,8 +106,8 @@
                         <div class="service-icon">
                             <i class="fa-solid fa-code"></i>
                         </div>
-                        <h3>定制化软件开发</h3>
-                        <p>前端与后端的深度融合。采用现代技术栈（Next.js, Vue, Node.js）构建高性能、高安全性的 Web 与移动端应用。</p>
+                        <h3 data-i18n="service_dev_title">定制化软件开发</h3>
+                        <p data-i18n="service_dev_desc">前端与后端的深度融合。采用现代技术栈（Next.js, Vue, Node.js）构建高性能、高安全性的 Web 与移动端应用。</p>
                     </div>
 
                     <!-- 服务卡片 3 -->
@@ -104,8 +115,8 @@
                         <div class="service-icon">
                             <i class="fa-solid fa-lightbulb"></i>
                         </div>
-                        <h3>品牌与视觉策划</h3>
-                        <p>从品牌策略、VI 设计系统到多媒体创意呈现，为您的品牌重塑独特的数字个性和传播力。</p>
+                        <h3 data-i18n="service_brand_title">品牌与视觉策划</h3>
+                        <p data-i18n="service_brand_desc">从品牌策略、VI 设计系统到多媒体创意呈现，为您的品牌重塑独特的数字个性和传播力。</p>
                     </div>
 
                     <!-- 服务卡片 4 -->
@@ -113,8 +124,8 @@
                         <div class="service-icon">
                             <i class="fa-solid fa-camera"></i>
                         </div>
-                        <h3>商业摄影与视频制作</h3>
-                        <p>提供专业商业广告、产品静物、企业形象宣传片及活动记录的拍摄与后期包装，用高水准镜头叙述您的品牌故事。</p>
+                        <h3 data-i18n="service_photo_title">商业摄影与视频制作</h3>
+                        <p data-i18n="service_photo_desc">提供专业商业广告、产品静物、企业形象宣传片及活动记录的拍摄与后期包装，用高水准镜头叙述您的品牌故事。</p>
                     </div>
                 </div>
             </div>
@@ -128,7 +139,7 @@
                 <div class="about-grid">
                     <div class="about-content">
                         <span class="section-tag">About Us</span>
-                        <h2 class="section-title text-left">关于 Airtis Creative</h2>
+                        <h2 class="section-title text-left" data-i18n="about_title">关于 ARTISTECH Creative</h2>
                         
                         <!-- 
                             ==================================================
@@ -139,13 +150,13 @@
                         -->
                         <div class="editable-business-intro" id="user-business-intro">
                             <p class="lead-text">
-                                我们由一群对设计充满热忱、对技术执着追求的跨界专家组成。
+                                <span data-i18n="about_extra1">我们由一群对设计充满热忱、对技术执着追求的跨界专家组成。</span>
                             </p>
                             <p>
-                                Airtis Creative Enterprise 成立的初衷是打破创意与技术之间的壁垒。我们不单单提供代码，更提供能触动人心的视觉体验；我们不单单提供视觉，更提供能稳定运行、弹性扩展的技术架构。
+                                <span data-i18n="about_p1">ARTISTECH Creative Enterprise 成立的初衷是打破创意与技术之间的壁垒。我们</span><span data-i18n="about_p2">不单单提供代码，更提供能触动人心的视觉体验；我们不单单提供视觉，更提供能稳定运行、弹性扩展的技术架构。</span>
                             </p>
                             <p>
-                                无论是初创公司需要建立首个数字化品牌，还是成熟企业需要重构复杂的业务系统，我们都能作为您最可靠的创意与技术伙伴，共同探索商业增长的新空间。
+                                <span data-i18n="about_extra2">无论是初创公司需要建立首个数字化品牌，还是成熟企业需要重构复杂的业务系统，我们都能作为您最可靠的创意与技术伙伴，共同探索商业增长的新空间。</span>
                             </p>
                         </div>
                         <!-- ================================================== -->
@@ -153,15 +164,15 @@
                         <div class="about-stats">
                             <div class="stat-item">
                                 <span class="stat-num">50+</span>
-                                <span class="stat-label">交付项目</span>
+                                <span class="stat-label" data-i18n="about_stats_projects">交付项目</span>
                             </div>
                             <div class="stat-item">
                                 <span class="stat-num">98%</span>
-                                <span class="stat-label">客户满意度</span>
+                                <span class="stat-label" data-i18n="about_stats_satisfaction">客户满意度</span>
                             </div>
                             <div class="stat-item">
                                 <span class="stat-num">5+</span>
-                                <span class="stat-label">行业经验</span>
+                                <span class="stat-label" data-i18n="about_stats_experience">行业经验</span>
                             </div>
                         </div>
                     </div>
@@ -172,9 +183,9 @@
                             <div class="g-circle circle-1"></div>
                             <div class="g-circle circle-2"></div>
                             <div class="visual-content-card glass-card">
-                                <h4>设计理念</h4>
-                                <p>"让每一像素都有它存在的理由，让每一行代码都有它跃动的生命力。"</p>
-                                <span class="quote-author">— Airtis Creative Design Team</span>
+                                <h4 data-i18n="about_design_title">设计理念</h4>
+                                <p data-i18n="about_design_quote">"让每一像素都有它存在的理由，让每一行代码都有它跃动的生命力。"</p>
+                                <span class="quote-author" data-i18n="about_quote_author">— ARTISTECH Creative Design Team</span>
                             </div>
                         </div>
                     </div>
@@ -183,37 +194,7 @@
             </div>
         </section>
 
-        <!-- ==========================================
-             SUB-BRAND: MR.PET CALLOUT SECTION (旗下实体服务版块)
-             ========================================== -->
-        <section id="mr-pet-section" class="mr-pet-section section-padding">
-            <div class="container">
-                <div class="mr-pet-banner glass-card">
-                    <div class="mr-pet-content">
-                        <div class="mr-pet-header-container">
-                            <div class="mr-pet-logo-badge">
-                                <img src="mrpet_logo.png" alt="Mr.pet Logo" class="mr-pet-banner-logo">
-                            </div>
-                            <span class="mr-pet-tag"><i class="fa-solid fa-store"></i> 旗下实体服务</span>
-                        </div>
-                        <h2 class="mr-pet-title">Mr.pet pet grooming</h2>
-                        <h3 class="mr-pet-subtitle">高端专业上门宠物洗护与造型修剪</h3>
-                        <p class="mr-pet-description">这是 Airtis Creative 旗下经营的专业实体上门洗护服务品牌。美容师携带整套设备上门服务，免除爱宠乘车奔波与到店排队焦虑，在熟悉舒适的家中，享受最温和、最精致的洗护与定制造型服务。</p>
-                        
-                        <div class="mr-pet-highlights">
-                            <div class="highlight-item"><i class="fa-solid fa-soap"></i> 基础精致洗护</div>
-                            <div class="highlight-item"><i class="fa-solid fa-scissors"></i> 定制造型修剪</div>
-                            <div class="highlight-item"><i class="fa-solid fa-spa"></i> 奢华精油 SPA</div>
-                        </div>
-                    </div>
-                    <div class="mr-pet-action">
-                        <a href="pet.html" target="_blank" class="btn btn-primary mr-pet-btn">
-                            进入 Mr.pet 专属页面 <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+
 
         <!-- ==========================================
              FOUNDER SECTION / 创始人简介 (用户编辑区)
@@ -222,8 +203,8 @@
             <div class="container">
                 <div class="section-header">
                     <span class="section-tag">Founder</span>
-                    <h2 class="section-title">创始人简介</h2>
-                    <p class="section-subtitle">聆听技术与创意背后的掌舵人故事。</p>
+                    <h2 class="section-title" data-i18n="founder_section_title">创始人简介</h2>
+                    <p class="section-subtitle" data-i18n="founder_section_subtitle">聆听技术与创意背后的掌舵人故事。</p>
                 </div>
                 
                 <div class="founder-card glass-card">
@@ -231,7 +212,7 @@
                         <!-- 创始人头像 -->
                         <div class="founder-avatar-glow"></div>
                         <div class="founder-avatar">
-                            <img src="founder.png" alt="Airtis Creative 创始人" class="founder-img">
+                            <img src="founder.png" alt="ARTISTECH Creative 创始人" class="founder-img">
                         </div>
                     </div>
                     <div class="founder-info">
@@ -242,12 +223,12 @@
                             ==================================================
                         -->
                         <div class="founder-meta">
-                            <h3 class="founder-name">Vince Chan 曾天旺</h3> <!-- 👈 填写您的名字 -->
-                            <span class="founder-title">创始人 & 首席执行官</span> <!-- 👈 填写您的职位 -->
+                            <h3 class="founder-name" data-i18n="founder_name">Vince Chan 曾天旺</h3> <!-- 👈 填写您的名字 -->
+                            <span class="founder-title" data-i18n="founder_role">创始人 & 首席执行官</span> <!-- 👈 填写您的职位 -->
                         </div>
                         <div class="founder-bio">
                             <p class="founder-quote">"在数字浪潮的潮头，我们不仅在构建网页与系统，更在用科技与设计的交织，为企业绘制未来的蓝图。"</p>
-                            <p>作为 Airtis Creative 的创始人，在数字化转型、UI/UX 设计及企业技术架构领域深耕多年，致力于将最前沿的设计美学与工程实践带给每一位合作伙伴。</p>
+                            <p data-i18n="founder_desc">作为 ARTISTECH Creative 的创始人，在数字化转型、UI/UX 设计及企业技术架构领域深耕多年，致力于将最前沿的设计美学与工程实践带给每一位合作伙伴。</p>
                         </div>
                         <!-- ================================================== -->
                     </div>
@@ -261,23 +242,23 @@
         <section id="portfolio" class="portfolio-section section-padding">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">案例展示</h2>
-                    <p class="section-subtitle">精选我们在不同领域所创作的数字化体验与创新成果。</p>
+                    <h2 class="section-title" data-i18n="portfolio_title">案例展示</h2>
+                    <p class="section-subtitle" data-i18n="portfolio_subtitle_zh">精选我们在不同领域所创作的数字化体验与创新成果。</p>
                 </div>
 
                 <div class="portfolio-filter-container">
-                    <button class="filter-btn active" data-filter="all">全部</button>
-                    <button class="filter-btn" data-filter="photo">商业摄影 / 视频</button>
-                    <button class="filter-btn" data-filter="design">UI/UX 设计</button>
-                    <button class="filter-btn" data-filter="dev">技术开发</button>
-                    <button class="filter-btn" data-filter="brand">品牌创意</button>
+                    <button class="filter-btn active" data-filter="all" data-i18n="filter_all">全部</button>
+                    <button class="filter-btn" data-filter="photo" data-i18n="filter_photo">商业摄影 / 视频</button>
+                    <button class="filter-btn" data-filter="design" data-i18n="filter_design">UI/UX 设计</button>
+                    <button class="filter-btn" data-filter="dev" data-i18n="filter_dev">技术开发</button>
+                    <button class="filter-btn" data-filter="brand" data-i18n="filter_brand">品牌创意</button>
                 </div>
 
                 <div class="portfolio-grid" id="portfolio-grid">
                     <!-- Firebase 数据将会加载到这里 -->
                     <div style="text-align: center; grid-column: 1 / -1; padding: 40px; color: var(--text-secondary);">
                         <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
-                        <p style="margin-top: 15px;">正在加载最新作品...</p>
+                        <p style="margin-top: 15px;" data-i18n="portfolio_loading">正在加载最新作品...</p>
                     </div>
                 </div>
             </div>
@@ -290,8 +271,8 @@
             <div class="container">
                 <div class="contact-grid">
                     <div class="contact-info-card glass-card">
-                        <h2 class="section-title text-left">开始您的项目</h2>
-                        <p>无论您是想要咨询业务、提出建议，还是开启一个全新的合作项目，我们的创意专家随时在这里倾听。</p>
+                        <h2 class="section-title text-left" data-i18n="contact_section_title">开始您的项目</h2>
+                        <p data-i18n="contact_desc">无论您是想要咨询业务、提出建议，还是开启一个全新的合作项目，我们的创意专家随时在这里倾听。</p>
                         
                         <div class="info-list">
                             <!-- 
@@ -306,8 +287,8 @@
                                     <i class="fa-solid fa-envelope"></i>
                                 </div>
                                 <div class="info-text">
-                                    <span>联系邮箱</span>
-                                    <p><a href="mailto:vincechan@airtiscreative.com">vincechan@airtiscreative.com</a></p> <!-- 👈 替换为您真实的邮箱 -->
+                                    <span data-i18n="contact_email_label">联系邮箱</span>
+                                    <p><a href="mailto:vincechan@artistechcreative.com">vincechan@artistechcreative.com</a></p> <!-- 👈 替换为您真实的邮箱 -->
                                 </div>
                             </div>
 
@@ -316,7 +297,7 @@
                                     <i class="fa-brands fa-whatsapp"></i>
                                 </div>
                                 <div class="info-text">
-                                    <span>WhatsApp 咨询</span>
+                                    <span data-i18n="contact_phone_label">WhatsApp 咨询</span>
                                     <p><a href="https://wa.me/601165141754" target="_blank" rel="noopener">+601165141754</a></p> <!-- 👈 替换您的电话 -->
                                 </div>
                             </div>
@@ -326,7 +307,7 @@
                                     <i class="fa-solid fa-location-dot"></i>
                                 </div>
                                 <div class="info-text">
-                                    <span>办公地址</span>
+                                    <span data-i18n="contact_address_label">办公地址</span>
                                     <p>Flat F2/14C, Taman Setia Jaya<br>Jalan Langgar, 05460 Alor Setar, Kedah</p> <!-- 👈 替换您的地址 -->
                                 </div>
                             </div>
@@ -335,21 +316,21 @@
                     </div>
 
                     <div class="contact-form-card glass-card">
-                        <h3>留言咨询</h3>
+                        <h3 data-i18n="form_title">留言咨询</h3>
                         <form id="contact-form" class="contact-form" action="https://formspree.io/f/xnjyjpgb" method="POST">
                             <div class="form-group">
-                                <label for="form-name">您的姓名</label>
-                                <input type="text" id="form-name" name="name" required placeholder="例如：张先生">
+                                <label for="form-name" data-i18n="form_name_label">您的姓名</label>
+                                <input type="text" id="form-name" name="name" required placeholder="例如：张先生" data-i18n-placeholder="form_name_placeholder">
                             </div>
                             <div class="form-group">
-                                <label for="form-email">您的邮箱</label>
-                                <input type="email" id="form-email" name="email" required placeholder="例如：client@example.com">
+                                <label for="form-email" data-i18n="form_email_label">您的邮箱</label>
+                                <input type="email" id="form-email" name="email" required placeholder="例如：client@example.com" data-i18n-placeholder="form_email_placeholder">
                             </div>
                             <div class="form-group">
-                                <label for="form-message">您的需求简述</label>
-                                <textarea id="form-message" name="message" rows="5" required placeholder="请简要描述您的项目需求或咨询问题..."></textarea>
+                                <label for="form-message" data-i18n="form_message_label">您的需求简述</label>
+                                <textarea id="form-message" name="message" rows="5" required placeholder="请简要描述您的项目需求或咨询问题..." data-i18n-placeholder="form_message_placeholder"></textarea>
                             </div>
-                            <button type="submit" id="btn-submit-form" class="btn btn-primary btn-block">发送留言</button>
+                            <button type="submit" id="btn-submit-form" class="btn btn-primary btn-block" data-i18n="form_submit">发送留言</button>
                         </form>
                         <div id="form-status-msg" class="status-msg hide"></div>
                     </div>
@@ -363,16 +344,71 @@
          ========================================== -->
     <footer class="footer">
         <div class="container footer-container">
-            <p>&copy; 2026 Airtis Creative Enterprise. All Rights Reserved.</p>
+            <p>&copy; 2026 ARTISTECH Creative Enterprise <span data-i18n="footer_rights">All Rights Reserved.</span><br><small style="opacity:0.6; font-size:0.8rem;">SSM: 202603150956 (KT0615516-X)</small></p>
             <div class="footer-links">
-                <a href="#hero">返回顶部</a>
-                <a href="https://github.com/AirtisTech/Homepage" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+                <a href="#hero" data-i18n="footer_back_top">返回顶部</a>
+                <a href="https://github.com/ARTISTECHTech/Homepage" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
             </div>
         </div>
     </footer>
 
-    <!-- Custom JavaScript -->
+    
+    <!-- ==========================================
+         CASE DETAIL MODAL / 案例详情弹窗
+         ========================================== -->
+    <div id="case-modal" class="modal-overlay" style="display:none;">
+        <div class="modal-content glass-card">
+            <button class="modal-close" id="case-modal-close" aria-label="Close">&times;</button>
+            <div id="case-modal-body"></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         INQUIRY MODAL / 询价弹窗
+         ========================================== -->
+    <div id="inquiry-modal" class="modal-overlay" style="display:none;">
+        <div class="modal-content glass-card modal-inquiry">
+            <button class="modal-close" id="inquiry-modal-close" aria-label="Close">&times;</button>
+            <h3 data-i18n="inquiry_title">获取类似方案报价</h3>
+            <p style="color:var(--text-muted);margin-bottom:24px;" data-i18n="inquiry_desc">填写以下信息，我们的团队会在24小时内与您联系，为您提供定制化的解决方案。</p>
+            <form id="inquiry-form" class="contact-form">
+                <input type="hidden" id="inq-case-id" value="">
+                <input type="hidden" id="inq-case-title" value="">
+                <div class="form-group">
+                    <label for="inq-service" data-i18n="inquiry_service_label">感兴趣的服务</label>
+                    <input type="text" id="inq-service" readonly style="background:rgba(255,255,255,0.05);color:var(--color-primary);font-weight:500;">
+                </div>
+                <div class="form-group">
+                    <label for="inq-name" data-i18n="inquiry_name_label">您的姓名 <span style="color:var(--color-primary);">*</span></label>
+                    <input type="text" id="inq-name" required placeholder="例如：张先生">
+                </div>
+                <div class="form-group">
+                    <label for="inq-email" data-i18n="inquiry_email_label">联系邮箱 <span style="color:var(--color-primary);">*</span></label>
+                    <input type="email" id="inq-email" required placeholder="client@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="inq-phone" data-i18n="inquiry_phone_label">联系电话</label>
+                    <input type="tel" id="inq-phone" placeholder="例如：+60123456789">
+                </div>
+                <div class="form-group">
+                    <label for="inq-message" data-i18n="inquiry_message_label">您的需求简述 <span style="color:var(--color-primary);">*</span></label>
+                    <textarea id="inq-message" rows="4" required placeholder="请描述您的项目需求、预算范围及期望时间..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" id="btn-inquiry-submit" data-i18n="inquiry_submit">提交询价</button>
+            </form>
+            <div id="inquiry-status" class="status-msg hide"></div>
+        </div>
+    </div>
+<!-- Custom JavaScript -->
     <script src="app.js"></script>
-    <script type="module" src="portfolio.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+    <script src="portfolio.js?v=3"></script>
 </body>
 </html>
+
+
+
+
+
+

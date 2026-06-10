@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Airtis Admin - 后台管理系统</title>
+    <title>ARTISTECH Admin - 后台管理系统</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
 </head>
 <body>
     <div id="login-container" class="glass-panel">
-        <div class="logo">Airtis <span>Admin</span></div>
+        <div class="logo">ARTISTECH <span>Admin</span></div>
         <h2>登录后台</h2>
         <form id="login-form">
             <div class="input-group">
@@ -26,57 +26,139 @@
 
     <div id="admin-dashboard" class="glass-panel" style="display: none;">
         <div class="dashboard-header">
-            <div class="logo">Airtis <span>Admin</span></div>
-            <button id="logout-btn" class="btn btn-outline">退出登录</button>
-        </div>
-        
-        <div class="dashboard-content">
-            <div class="form-section">
-                <h3>添加新作品</h3>
-                <form id="add-portfolio-form">
-                    <div class="input-group">
-                        <label>作品标题</label>
-                        <input type="text" id="p-title" placeholder="例如：未来资产管理平台" required>
-                    </div>
-                    <div class="input-group">
-                        <label>作品分类</label>
-                        <select id="p-category" required>
-                            <option value="design">UI/UX 设计</option>
-                            <option value="dev">技术开发</option>
-                            <option value="brand">品牌创意</option>
-                            <option value="photo">商业摄影 / 视频</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label>作品链接 (支持YouTube、Vimeo视频链接或普通图片链接)</label>
-                        <input type="url" id="p-url" placeholder="https://..." required>
-                    </div>
-                    <div class="input-group">
-                        <label>作品简介</label>
-                        <textarea id="p-desc" rows="3" placeholder="简短描述该作品..."></textarea>
-                    </div>
-                    <input type="hidden" id="p-id" value="">
-                    <div style="display: flex; gap: 10px;">
-                        <button type="submit" class="btn btn-primary" id="save-btn" style="flex: 1;">
-                            <i class="fa-solid fa-cloud-arrow-up"></i> 保存并发布
-                        </button>
-                        <button type="button" class="btn btn-outline" id="cancel-edit-btn" style="display: none;">
-                            取消
-                        </button>
-                    </div>
-                </form>
+            <div class="logo">ARTISTECH <span>Admin</span></div>
+            <div style="display: flex; gap: 12px; align-items: center;">
+                <span id="unread-badge" class="unread-badge" style="display:none;">0</span>
+                <button id="logout-btn" class="btn btn-outline">退出登录</button>
             </div>
-            
-            <div class="list-section">
-                <h3>已发布的项目</h3>
-                <div id="portfolio-list" class="portfolio-list">
-                    <div class="loading">正在加载数据...</div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="admin-tabs">
+            <button class="admin-tab active" data-tab="tab-portfolio">
+                <i class="fa-solid fa-briefcase"></i> 作品管理
+            </button>
+            <button class="admin-tab" data-tab="tab-inquiries">
+                <i class="fa-solid fa-envelope"></i> 询价管理 <span id="inquiry-count-badge" class="count-badge">0</span>
+            </button>
+        </div>
+
+        <!-- ========== TAB: 作品管理 ========== -->
+        <div id="tab-portfolio" class="tab-content active">
+            <div class="dashboard-content">
+                <div class="form-section">
+                    <h3>添加 / 编辑作品</h3>
+                    <form id="add-portfolio-form">
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                            <div class="lang-field-toggle">
+                                <button type="button" class="lang-field-btn active" data-lang="zh">中</button>
+                                <button type="button" class="lang-field-btn" data-lang="en">EN</button>
+                            </div>
+                            <span style="font-size:0.8rem;color:var(--text-secondary);">切换语言字段</span>
+                        </div>
+                        <div class="input-group">
+                            <label class="field-zh">作品标题 <span style="color:var(--color-secondary);">*</span></label>
+                            <label class="field-en" style="display:none;">Title <span style="color:var(--color-secondary);">*</span></label>
+                            <input type="text" class="field-zh" id="p-title" placeholder="例如：未来资产管理平台" required>
+                            <input type="text" class="field-en" id="p-title-en" placeholder="e.g. Future Asset Management Platform" style="display:none;">
+                        </div>
+                        <div class="input-group">
+                            <label>作品分类 / Category <span style="color:var(--color-secondary);">*</span></label>
+                            <select id="p-category" required>
+                                <option value="design">UI/UX 设计</option>
+                                <option value="dev">技术开发</option>
+                                <option value="brand">品牌创意</option>
+                                <option value="photo">商业摄影 / 视频</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>作品链接 / URL <span style="color:var(--color-secondary);">*</span> (YouTube、Vimeo、图片)</label>
+                            <input type="url" id="p-url" placeholder="https://..." required>
+                        </div>
+                        <div class="input-group">
+                            <label class="field-zh">客户名称</label>
+                            <label class="field-en" style="display:none;">Client Name</label>
+                            <input type="text" class="field-zh" id="p-client" placeholder="例如：某某科技有限公司">
+                            <input type="text" class="field-en" id="p-client-en" placeholder="e.g. ABC Tech Ltd" style="display:none;">
+                        </div>
+                        <div class="input-group">
+                            <label class="field-zh">所属行业</label>
+                            <label class="field-en" style="display:none;">Industry</label>
+                            <input type="text" class="field-zh" id="p-industry" placeholder="例如：金融、医疗、教育">
+                            <input type="text" class="field-en" id="p-industry-en" placeholder="e.g. Finance, Healthcare" style="display:none;">
+                        </div>
+                        <div class="input-group">
+                            <label>使用技术 / Tech Stack</label>
+                            <input type="text" id="p-tech" placeholder="例如：React, Node.js, Firebase">
+                        </div>
+                        <div class="input-group">
+                            <label class="field-zh">成果 / 数据亮点</label>
+                            <label class="field-en" style="display:none;">Results / Highlights</label>
+                            <input type="text" class="field-zh" id="p-results" placeholder="例如：转化率提升40%，月活用户10万+">
+                            <input type="text" class="field-en" id="p-results-en" placeholder="e.g. 40% conversion lift, 100K+ MAU" style="display:none;">
+                        </div>
+                        <div class="input-group">
+                            <label class="field-zh">客户评价</label>
+                            <label class="field-en" style="display:none;">Testimonial</label>
+                            <textarea class="field-zh" id="p-testimonial" rows="2" placeholder="客户的原话评价..."></textarea>
+                            <textarea class="field-en" id="p-testimonial-en" rows="2" placeholder="Client testimonial..." style="display:none;"></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label class="field-zh">评价人</label>
+                            <label class="field-en" style="display:none;">Author</label>
+                            <input type="text" class="field-zh" id="p-testimonial-author" placeholder="例如：张总经理">
+                            <input type="text" class="field-en" id="p-testimonial-author-en" placeholder="e.g. Mr. Zhang, CEO" style="display:none;">
+                        </div>
+                        <div class="input-group">
+                            <label class="field-zh">作品简介</label>
+                            <label class="field-en" style="display:none;">Description</label>
+                            <textarea class="field-zh" id="p-desc" rows="2" placeholder="简短描述该作品..."></textarea>
+                            <textarea class="field-en" id="p-desc-en" rows="2" placeholder="Brief description..." style="display:none;"></textarea>
+                        </div>
+                        <input type="hidden" id="p-id" value="">
+                        <div style="display: flex; gap: 10px;">
+                            <button type="submit" class="btn btn-primary" id="save-btn" style="flex: 1;">
+                                <i class="fa-solid fa-cloud-arrow-up"></i> 保存并发布
+                            </button>
+                            <button type="button" class="btn btn-outline" id="cancel-edit-btn" style="display: none;">
+                                取消
+                            </button>
+                        </div>
+                    </form>
                 </div>
+                
+                <div class="list-section">
+                    <h3>已发布的项目</h3>
+                    <div id="portfolio-list" class="portfolio-list">
+                        <div class="loading">正在加载数据...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== TAB: 询价管理 ========== -->
+        <div id="tab-inquiries" class="tab-content">
+            <div class="inquiry-controls">
+                <h3>客户询价列表</h3>
+                <div class="inquiry-filters">
+                    <button class="inq-filter-btn active" data-status="all">全部</button>
+                    <button class="inq-filter-btn" data-status="new">未读</button>
+                    <button class="inq-filter-btn" data-status="contacted">已联系</button>
+                    <button class="inq-filter-btn" data-status="closed">已关闭</button>
+                </div>
+            </div>
+            <div id="inquiry-list" class="inquiry-list">
+                <div class="loading">正在加载数据...</div>
             </div>
         </div>
     </div>
 
-    <!-- Firebase App (the core Firebase SDK) -->
-    <script type="module" src="admin.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+    <script src="admin.js?v=3"></script>
 </body>
 </html>
+
+
+
+
