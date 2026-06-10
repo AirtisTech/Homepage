@@ -1,5 +1,4 @@
-﻿
-// Firebase
+
 const firebaseConfig = {
     apiKey: "AIzaSyBC49v7s4RbFSjblR0xLP66vWX7nxNO1nY",
     authDomain: "artistech-portfolio.firebaseapp.com",
@@ -9,20 +8,15 @@ const firebaseConfig = {
     appId: "1:1059592321021:web:4edcb8b7bfaa0bc0edcb94"
 };
 
-let db = null;
-try {
-    firebase.initializeApp(firebaseConfig);
-    db = firebase.firestore();
-} catch (e) {
-    console.warn("Firebase init failed:", e.message);
-}
+firebase.initializeApp(firebaseConfig);
+var db = firebase.firestore();
 
 // ========== AUTH ==========
-const loginEl = document.getElementById('login-container');
-const dashEl = document.getElementById('admin-dashboard');
-const loginForm = document.getElementById('login-form');
-const logoutBtn = document.getElementById('logout-btn');
-const errMsg = document.getElementById('login-error');
+var loginEl = document.getElementById('login-container');
+var dashEl = document.getElementById('admin-dashboard');
+var loginForm = document.getElementById('login-form');
+var logoutBtn = document.getElementById('logout-btn');
+var errMsg = document.getElementById('login-error');
 
 if (localStorage.getItem('artistech_admin') === 'true') showDashboard();
 
@@ -138,14 +132,8 @@ addForm.addEventListener('submit', async function(e) {
 
     saveBtn.disabled = true;
     saveBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> 保存中...';
-    var saveTimeout = setTimeout(function() {
-        saveBtn.disabled = false;
-        saveBtn.innerHTML = pId ? '<i class="fa-solid fa-cloud-arrow-up"></i> 更新发布' : '<i class="fa-solid fa-cloud-arrow-up"></i> 保存并发布';
-        alert('保存超时。请检查网络连接后重试。');
-    }, 15000);
 
     try {
-        if (!db) throw new Error('Firebase 未连接，请检查网络后刷新页面重试。');
         if (pId) {
             await db.collection("portfolio").doc(pId).update(formData);
             alert('作品更新成功！');
@@ -157,9 +145,8 @@ addForm.addEventListener('submit', async function(e) {
         loadPortfolio();
     } catch (error) {
         console.error("Error:", error);
-        alert('保存失败：' + error.message);
+        alert('保存失败：' + (error.message || '请确认已在 Firebase Console 开通 Firestore 数据库'));
     } finally {
-        clearTimeout(saveTimeout);
         saveBtn.disabled = false;
         saveBtn.innerHTML = pId ? '<i class="fa-solid fa-cloud-arrow-up"></i> 更新发布' : '<i class="fa-solid fa-cloud-arrow-up"></i> 保存并发布';
     }
@@ -223,7 +210,7 @@ async function loadPortfolio() {
         });
     } catch (error) {
         console.error("Error:", error);
-        listEl.innerHTML = '<div style="color: #ff4d4d; text-align:center; padding:40px;">加载失败。</div>';
+        listEl.innerHTML = '<div style="color: #ff4d4d; text-align:center; padding:40px;">加载失败。请确认 Firestore 已开通。</div>';
     }
 }
 
@@ -262,8 +249,7 @@ function renderInquiries() {
         var date = inq.createdAt && inq.createdAt.toDate ? inq.createdAt.toDate().toLocaleString('zh-CN') : '刚刚';
         return '<div class="inq-card ' + (inq.status === 'new' ? 'inq-new' : '') + '">' +
             '<div class="inq-header"><strong>' + inq.name + '</strong><span class="inq-status ' + getStatusClass(inq.status) + '">' + getStatusText(inq.status) + '</span></div>' +
-            '<div class="inq-meta">' +
-            '<span><i class="fa-solid fa-envelope"></i> ' + inq.email + '</span>' +
+            '<div class="inq-meta"><span><i class="fa-solid fa-envelope"></i> ' + inq.email + '</span>' +
             (inq.phone ? '<span><i class="fa-solid fa-phone"></i> ' + inq.phone + '</span>' : '') +
             '<span><i class="fa-solid fa-clock"></i> ' + date + '</span></div>' +
             (inq.serviceInterest ? '<div class="inq-service">感兴趣：' + inq.serviceInterest + '</div>' : '') +
