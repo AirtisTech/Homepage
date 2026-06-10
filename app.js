@@ -36,7 +36,7 @@ const i18n = {
         service_dev_title: "定制化软件开发",
         service_dev_desc: "前端与后端的深度融合。采用现代技术栈（React, Node.js, Flutter 等）构建高性能、高安全性的 Web 与移动端应用。",
         service_photo_title: "商业摄影",
-        service_photo_desc: "提供专业产品静物、企业形象等拍摄服务，用高水准镜头语言呈现您的品牌故事。（此业务逐步过渡中）",
+        service_photo_desc: "提供专业产品静物、企业形象等拍摄服务，用高水准镜头语言呈现您的品牌故事。",
 
         about_title: "关于 ARTISTECH Creative",
         about_p1: "ARTISTECH Creative Enterprise 成立的初衷是打破创意与技术之间的壁垒。我们",
@@ -149,7 +149,7 @@ const i18n = {
         service_dev_title: "Custom Software Development",
         service_dev_desc: "Full-stack development with React, Node.js, Flutter and more — building high-performance, secure web and mobile applications.",
         service_photo_title: "Commercial Photography",
-        service_photo_desc: "Professional product and corporate photography that tells your brand story through exceptional visuals. (Phasing out gradually)",
+        service_photo_desc: "Professional product and corporate photography that tells your brand story through exceptional visuals.",
 
         about_title: "About ARTISTECH Creative",
         about_p1: "ARTISTECH Creative Enterprise was founded to break down the barriers between creativity and technology.",
