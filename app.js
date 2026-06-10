@@ -50,11 +50,11 @@ const i18n = {
         portfolio_title: "案例展示",
         portfolio_subtitle: "每一个作品都是创意与技术的结晶。以下是我们引以为豪的部分案例。",
 
-        filter_all: "全部作品",
-        filter_design: "UI/UX 设计",
+        filter_all: "全部",
+        filter_ai: "AI / 人工智能",
         filter_dev: "技术开发",
-        filter_brand: "品牌创意",
-        filter_photo: "摄影 / 视频",
+        filter_3d: "3D 打印",
+        filter_photo: "商业摄影",
 
         contact_title: "联系我们",
         contact_desc: "无论您是想要咨询业务、提出建议，还是开启一个全新的合作项目，我们的创意专家随时在这里倾听。",
@@ -163,11 +163,11 @@ const i18n = {
         portfolio_title: "Portfolio",
         portfolio_subtitle: "Every project is the culmination of creativity and technology. Here are some of our proudest works.",
 
-        filter_all: "All Works",
-        filter_design: "UI/UX Design",
+        filter_all: "All",
+        filter_ai: "AI",
         filter_dev: "Development",
-        filter_brand: "Branding",
-        filter_photo: "Photo / Video",
+        filter_3d: "3D Printing",
+        filter_photo: "Photography",
 
         contact_title: "Contact Us",
         contact_desc: "Whether you want to discuss a project, share an idea, or start a new collaboration, our creative experts are always here to listen.",
